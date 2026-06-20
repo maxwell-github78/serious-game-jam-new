@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dk4ms1u7n3mal"]
+
+[ext_resource type="TileSet" uid="uid://baej84nvk5j8b" path="res://assets/tilesets/floors.tres" id="1_toa5u"]
+[ext_resource type="TileSet" uid="uid://q2unpso7fkk2" path="res://assets/tilesets/walls.tres" id="2_yipvg"]
+
+[node name="Tilemap" type="Node2D" unique_id=1816029490]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1631177475]
+tile_set = ExtResource("1_toa5u")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1783869903]
+position = Vector2(-1, 0)
+tile_set = ExtResource("2_yipvg")

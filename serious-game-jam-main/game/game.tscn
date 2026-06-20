@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d0my0skt34y3i"]
+
+[ext_resource type="Script" uid="uid://dapndd2maoriy" path="res://game/game.gd" id="1_4fuuu"]
+[ext_resource type="PackedScene" uid="uid://bd4c81k50wcc5" path="res://player/player.tscn" id="2_dxrkv"]
+[ext_resource type="Texture2D" uid="uid://suugpaiyxg55" path="res://assets/icon.svg" id="3_dakft"]
+[ext_resource type="Script" uid="uid://coob6kfnmaefj" path="res://game/pointer.gd" id="4_u5opy"]
+[ext_resource type="PackedScene" uid="uid://dk4ms1u7n3mal" path="res://tilemap/tilemap.tscn" id="5_dxrkv"]
+
+[node name="Game" type="Node2D" unique_id=539578422]
+script = ExtResource("1_4fuuu")
+
+[node name="Player" parent="." unique_id=1113642636 instance=ExtResource("2_dxrkv")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2030688207]
+
+[node name="Pointer" type="Sprite2D" parent="." unique_id=743675381]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_dakft")
+script = ExtResource("4_u5opy")
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=308873463]
+
+[node name="Tilemap" parent="." unique_id=1816029490 instance=ExtResource("5_dxrkv")]

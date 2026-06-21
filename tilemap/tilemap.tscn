@@ -43,7 +43,6 @@ sources/2 = SubResource("TileSetAtlasSource_h758o")
 tile_set = ExtResource("1_toa5u")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=1783869903]
-position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_toa5u")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1259246249]

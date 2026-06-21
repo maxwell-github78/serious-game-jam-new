@@ -1,3 +1,12 @@
 res://tilemap/tilemap.tscn
 res://assets/tilesets/floors.tres
 res://assets/tilesets/walls.tres
+res://game/game.tscn
+res://gun/hitscan_component.gd
+res://player/player.gd
+res://gun/projectile_component.gd
+res://gun/gun_component.gd
+res://tilemap/rooms/room1.tscn
+res://bullet/bullet.tscn
+res://player/player.tscn
+res://game/game.gd

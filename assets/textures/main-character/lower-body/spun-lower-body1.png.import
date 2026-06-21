@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6b10gkgv3f80"
-path="res://.godot/imported/room_tiles.png-4c163e9666b76c0c44792b7c24d246c0.ctex"
+uid="uid://c4wilspoqglax"
+path="res://.godot/imported/spun-lower-body1.png-4c7f3d26cfd1b2de98ca757dc348e533.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/room_tiles.png"
-dest_files=["res://.godot/imported/room_tiles.png-4c163e9666b76c0c44792b7c24d246c0.ctex"]
+source_file="res://assets/textures/main-character/lower-body/spun-lower-body1.png"
+dest_files=["res://.godot/imported/spun-lower-body1.png-4c7f3d26cfd1b2de98ca757dc348e533.ctex"]
 
 [params]
 

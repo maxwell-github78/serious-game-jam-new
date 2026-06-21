@@ -1,25 +1,33 @@
-[gd_resource type="TileSet" format=3 uid="uid://q2unpso7fkk2"]
+[gd_resource type="TileSet" format=3 uid="uid://p8oo521v1kj7"]
 
-[ext_resource type="Texture2D" uid="uid://6b10gkgv3f80" path="res://assets/textures/room_tiles.png" id="1_h758o"]
+[ext_resource type="Texture2D" uid="uid://3k33pyw55ws4" path="res://assets/textures/room_sheet.png" id="1_h758o"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h758o"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxn5k"]
 texture = ExtResource("1_h758o")
 texture_region_size = Vector2i(32, 32)
-0:2/0 = 0
-0:1/0 = 0
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, -8, -16, -10, -16, -10, 16, 10, 16, 10, -16)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -16, -10, 16, 10, 16, 10, -16)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -9, -10, -9, -10, -16, 10, -16, 10, -9, 16, -9, 16, 11, 10, 11, 10, 16, -10, 16, -10, 11, -16, 11)
 2:0/0 = 0
-2:1/0 = 0
-1:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-4:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -9, 16, -9, 16, 11, -16, 11)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -9, 10, -9, 10, 16, -10, 16, -10, 11, -16, 11)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, 16, -10, -9, 16, -9, 16, 11, 10, 11, 10, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -9, 16, -9, 16, 11, 10, 11, 10, 16, -10, 16, -10, 11, -16, 11)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -16, -10, 16, 10, 16, 10, 11, 16, 11, 16, -9, 10, -9, 10, -16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -16, -10, -9, -16, -9, -16, 11, 16, 11, 16, -9, 10, -9, 10, -16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -16, -10, -9, -16, -9, -16, 11, -10, 11, -10, 16, 10, 16, 10, -16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -16, -10, 11, 16, 11, 16, -9, 10, -9, 10, -16)
 
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 3
-sources/2 = SubResource("TileSetAtlasSource_h758o")
+sources/0 = SubResource("TileSetAtlasSource_uxn5k")

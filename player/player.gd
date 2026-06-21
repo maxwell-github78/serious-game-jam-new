@@ -7,7 +7,12 @@ extends CharacterBody2D
 
 @onready var game: Game = get_parent()
 @onready var bullet_start = $"Bullet Start"
-@onready var gun = GunComponent.new()
+@onready var gun = HitscanComponent.new()
+
+@onready var lower: AnimatedSprite2D = $LowerBody
+@onready var upper: AnimatedSprite2D = $UpperBody
+
+var running = false
 
 func _ready():
 	add_child(gun)
@@ -18,11 +23,21 @@ func _physics_process(_delta: float) -> void:
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	
+	running = false
 	if direction.x:
 		velocity.x += direction.x * acceleration
+		running = true
 		
 	if direction.y:
 		velocity.y += direction.y * acceleration
+		running = true
+		
+	if running:
+		upper.play("running")
+		lower.play("running")
+	else:
+		upper.stop()
+		lower.stop()
 		
 	velocity -= friction * velocity
 

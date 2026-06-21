@@ -10,3 +10,4 @@ res://tilemap/rooms/room1.tscn
 res://bullet/bullet.tscn
 res://player/player.tscn
 res://game/game.gd
+res://tilemap/rooms/room_base.tscn

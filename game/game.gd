@@ -4,6 +4,7 @@ class_name Game
 @onready var projectiles: Node2D = $Projectiles
 @onready var walls: TileMapLayer = $Tilemap/Walls
 @onready var floors: TileMapLayer = $Tilemap/Floor
+@onready var player: CharacterBody2D = $Player
 
 var valid_tiles_dict: Dictionary[Vector2i, bool] = {}
 var valid_tiles: Array[Vector2i]
@@ -30,9 +31,11 @@ func _spawn_enemies(n: int) -> void:
 		var grid_position = valid_tiles.pick_random()
 		valid_tiles.erase(grid_position)
 		var debug := Sprite2D.new()
-		debug.position = Vector2(grid_position) * 32.0 
+		var spawn_position := Vector2(grid_position) * 32.0 
+		debug.position = spawn_position
 		debug.texture = debug_sprite
 		add_child(debug)
+	
 		
 	
 			

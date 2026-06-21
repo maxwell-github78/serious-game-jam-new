@@ -59,6 +59,9 @@ func _process(_delta: float) -> void:
 		gun.shoot()
 	if Input.is_action_just_released("ui_shoot"):
 		gun.shoot_timer.stop()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 	
 func _look_at_mouse() -> void:

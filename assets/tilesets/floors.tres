@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://baej84nvk5j8b"]
 
 [ext_resource type="Texture2D" uid="uid://3k33pyw55ws4" path="res://assets/textures/room_sheet.png" id="1_71k6k"]
+[ext_resource type="Texture2D" uid="uid://crke2fit5x5er" path="res://assets/textures/stairs.png" id="2_28m31"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_28m31"]
 texture = ExtResource("1_71k6k")
@@ -20,6 +21,17 @@ texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
 0:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c3ti5"]
+texture = ExtResource("2_28m31")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 sources/3 = SubResource("TileSetAtlasSource_28m31")
+sources/4 = SubResource("TileSetAtlasSource_c3ti5")

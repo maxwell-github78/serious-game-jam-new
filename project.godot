@@ -15,6 +15,12 @@ run/main_scene="uid://d0my0skt34y3i"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_left={

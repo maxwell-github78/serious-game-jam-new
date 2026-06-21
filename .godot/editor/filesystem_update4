@@ -11,3 +11,6 @@ res://bullet/bullet.tscn
 res://player/player.tscn
 res://game/game.gd
 res://tilemap/rooms/room_base.tscn
+res://enemy/enemy.tscn
+res://enemy/enemy.gd
+res://game/pointer.gd

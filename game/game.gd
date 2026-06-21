@@ -5,9 +5,12 @@ class_name Game
 @onready var walls: TileMapLayer = $Tilemap/Walls
 @onready var floors: TileMapLayer = $Tilemap/Floor
 @onready var player: CharacterBody2D = $Player
+@onready var enemies: Node2D = $Enemies
 
 var valid_tiles_dict: Dictionary[Vector2i, bool] = {}
 var valid_tiles: Array[Vector2i]
+
+const enemy_pckd_scene: PackedScene = preload("res://enemy/enemy.tscn")
 
 func _ready() -> void:
 	Engine.max_fps = 60
@@ -26,16 +29,20 @@ func _spawn_enemies(n: int) -> void:
 		if valid_tiles_dict[tile]:
 			valid_tiles.append(tile)
 	
-	var debug_sprite := load("res://assets/textures/debug_marker.png")
-	for i in range(n):
+	var i: int = 0
+	while i < n:
 		var grid_position = valid_tiles.pick_random()
 		valid_tiles.erase(grid_position)
-		var debug := Sprite2D.new()
 		var spawn_position := Vector2(grid_position) * 32.0 
-		debug.position = spawn_position
-		debug.texture = debug_sprite
-		add_child(debug)
-	
+		
+		var offset: Vector2 = spawn_position - player.position
+		if offset.length() < 32.0 * 4:
+			continue
+		
+		i += 1
+		var enemy: CharacterBody2D = enemy_pckd_scene.instantiate()
+		enemy.position = spawn_position
+		enemies.add_child(enemy)
 		
 	
 			

@@ -13,8 +13,7 @@ var rounds = gun_capacity
 var reload_timer := Timer.new()
 var shoot_timer := Timer.new()
 
-const packed_bullet: PackedScene = preload("res://bullet/bullet.tscn")
-
+var infinite_ammo := false
 
 func _init() -> void:
 	reload_timer.one_shot = true

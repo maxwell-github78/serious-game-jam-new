@@ -18,7 +18,7 @@ func _ready():
 	add_child(gun)
 	gun.parent = self
 	
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var direction: Vector2
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")

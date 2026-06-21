@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" format=3 uid="uid://chwhmhjwahrgm"]
+
+[ext_resource type="Texture2D" uid="uid://br8gnd8ld1vi3" path="res://assets/textures/navigation-texture.png" id="1_8qooh"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jg7xe"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rw8i"]
+texture = ExtResource("1_8qooh")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jg7xe")
+
+[resource]
+navigation_layer_0/layers = 1
+sources/1 = SubResource("TileSetAtlasSource_6rw8i")

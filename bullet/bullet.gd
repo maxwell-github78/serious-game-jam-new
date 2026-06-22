@@ -4,6 +4,7 @@ class_name Bullet
 var velocity: Vector2
 var walls: TileMapLayer
 var n: int
+var damage: int = 10
 
 @onready var sprite := $Sprite2D
 
@@ -24,6 +25,9 @@ func _physics_process(delta: float) -> void:
 		n += 1
 	
 func collision(body: Node2D) -> void:
-	#print(body)
+	print("hit projectile: ", body)
+	for child in body.get_children():
+		if child is HealthComponent:
+			child.take_damage(damage)
 	
 	queue_free()

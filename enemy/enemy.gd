@@ -10,10 +10,14 @@ extends CharacterBody2D
 @export var throw_time = 3.0
 @export var throw_time_randomness = 2.0
 
+@export_category("Combat")
+@export var starting_health: int = 20
+
 @onready var game: Game = get_parent().get_parent()
 @onready var tilemap
 @onready var bullet_start = $"Bullet Start"
 @onready var gun = HitscanComponent.new()
+@onready var health_component = HealthComponent.new(starting_health)
 
 @onready var body: AnimatedSprite2D = $Body
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
@@ -31,6 +35,8 @@ var previous_position: Vector2 = position
 var offset: Vector2
 
 func _ready() -> void:
+	add_child(health_component)
+	
 	player = game.player
 	
 	navigation.velocity_computed.connect(_move)
@@ -61,7 +67,9 @@ func _process(_delta: float) -> void:
 	look_at(player.position)
 	if body.animation == "throwing" and body.frame == 3 and not thrown:
 		throw()
-	
+
+func death() -> void: 
+	queue_free()
 	
 func _physics_process(delta: float) -> void:
 	prev_delta = delta

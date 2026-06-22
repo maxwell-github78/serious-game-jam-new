@@ -5,9 +5,13 @@ extends CharacterBody2D
 @export var max_speed = 200.0
 @export var friction = 0.2
 
+@export_category("Combat")
+@export var starting_health: int = 100
+
 @onready var game: Game = get_parent()
 @onready var bullet_start = $"Bullet Start"
 @onready var gun = HitscanComponent.new()
+@onready var health_component = HealthComponent.new(starting_health)
 
 @onready var lower: AnimatedSprite2D = $LowerBody
 @onready var upper: AnimatedSprite2D = $UpperBody
@@ -16,6 +20,7 @@ var running = false
 
 func _ready():
 	add_child(gun)
+	add_child(health_component)
 	gun.parent = self
 	
 func _physics_process(delta: float) -> void:
@@ -67,6 +72,9 @@ func _process(_delta: float) -> void:
 func _look_at_mouse() -> void:
 	var mouse_pos = get_global_mouse_position()
 	look_at(mouse_pos)
+
+func death() -> void: 
+	print("player dead")
 		
 
 

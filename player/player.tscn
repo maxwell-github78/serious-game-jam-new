@@ -74,15 +74,15 @@ script/source = "extends AnimatedSprite2D
 radius = 12.0
 height = 42.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllr7"]
-size = Vector2(14, 4)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yllr7"]
 radius = 11.0
 height = 24.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllr7"]
+size = Vector2(14, 4)
+
 [node name="Player" type="CharacterBody2D" unique_id=1113642636]
-collision_mask = 12
+collision_mask = 108
 motion_mode = 1
 script = ExtResource("1_onrkg")
 
@@ -112,10 +112,10 @@ zoom = Vector2(2, 2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1263726478]
-position = Vector2(33, 0)
-shape = SubResource("RectangleShape2D_yllr7")
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=366115580]
 position = Vector2(15, 0)
 shape = SubResource("CapsuleShape2D_yllr7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1263726478]
+position = Vector2(33, 0)
+shape = SubResource("RectangleShape2D_yllr7")

@@ -24,8 +24,10 @@ tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD+/wEAAgAAAAAAAAD9/wEAAAACAAA
 tile_set = ExtResource("2_jeaxl")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1007084393]
+position = Vector2(-193, -46)
 
 [node name="PlayerLeave" type="Area2D" parent="." unique_id=1487636693]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeave" unique_id=498312795]
+position = Vector2(192, -21)
 shape = SubResource("RectangleShape2D_1sf3f")

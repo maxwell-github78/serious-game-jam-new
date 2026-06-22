@@ -2,9 +2,9 @@ extends Area2D
 class_name Bullet
 
 var velocity: Vector2
-var walls: TileMapLayer
 var n: int
 var damage: int = 10
+var spin: bool
 
 @onready var sprite := $Sprite2D
 
@@ -13,7 +13,8 @@ var texture: Texture2D:
 		sprite.texture = new_texture
 
 func _process(delta: float) -> void:
-	sprite.rotate(PI/8 * 60 * delta)
+	if spin:
+		sprite.rotate(PI/8 * 60 * delta)
 
 func _ready() -> void:
 	body_entered.connect(collision)

@@ -3,11 +3,10 @@ class_name GunComponent
 
 var parent: Node2D
 
-@export_category("Shooting")
-@export var gun_capacity = 6
-@export var reload_wait_time = 2
-@export var shoot_interval_time = 0.5
-@export var gun_knockback_acceleration = 100.0
+var gun_capacity = 6
+var reload_wait_time = 2
+var shoot_interval_time = 0.5
+var gun_knockback_acceleration = 100.0
 
 var rounds = gun_capacity
 var reload_timer := Timer.new()

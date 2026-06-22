@@ -9,9 +9,13 @@ extends CharacterBody2D
 @export_category("Shooting")
 @export var throw_time = 3.0
 @export var throw_time_randomness = 2.0
+@export var gun_knockback_acceleration = 100.0
+@export var projectile_texture: Texture2D
+@export var projectile_spin: bool = true
 
 @export_category("Combat")
 @export var starting_health: int = 20
+@export var balance_value: int = 10
 
 @onready var game: Game = get_parent().get_parent()
 @onready var tilemap
@@ -23,7 +27,7 @@ extends CharacterBody2D
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var player: CharacterBody2D
 
-var bottle := ProjectileComponent.new()
+var projectiles := ProjectileComponent.new()
 
 var throw_timer := Timer.new()
 
@@ -35,6 +39,7 @@ var previous_position: Vector2 = position
 var offset: Vector2
 
 func _ready() -> void:
+	rotation = randf() * 2 * PI
 	add_child(health_component)
 	
 	player = game.player
@@ -46,13 +51,14 @@ func _ready() -> void:
 	throw_timer.timeout.connect(_set_throwing)
 	add_child(throw_timer)
 	
-	bottle.parent = self
-	bottle.texture = preload("res://assets/textures/beer-enemy/beer-bottle1.png")
-	bottle.infinite_ammo = true
+	projectiles.parent = self
+	projectiles.texture = projectile_texture
+	projectiles.infinite_ammo = true
+	projectiles.spin = projectile_spin
 	body.animation_finished.connect(_end_throwing)
 
 func throw() -> void:
-	bottle.shoot()
+	projectiles.shoot()
 	thrown = true
 	
 func _end_throwing() -> void:
@@ -64,11 +70,13 @@ func _set_throwing() -> void:
 	throwing = true
 	
 func _process(_delta: float) -> void:
-	look_at(player.position)
+	if spotted_player:
+		look_at(player.position)
 	if body.animation == "throwing" and body.frame == 3 and not thrown:
 		throw()
 
 func death() -> void: 
+	game.remaining_enemies -= 1
 	queue_free()
 	
 func _physics_process(delta: float) -> void:

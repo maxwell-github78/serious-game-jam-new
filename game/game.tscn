@@ -79,8 +79,11 @@ animations = [{
 
 [node name="Game" type="Node2D" unique_id=539578422]
 script = ExtResource("1_4fuuu")
+SCENE_OVERRIDE = ExtResource("2_dakft")
 
-[node name="Tilemap" parent="." unique_id=1816029490 instance=ExtResource("2_dakft")]
+[node name="Room" type="Node2D" parent="." unique_id=830116589]
+
+[node name="Tilemap" parent="Room" unique_id=1816029490 instance=ExtResource("2_dakft")]
 
 [node name="Enemies" type="Node2D" parent="." unique_id=939677875]
 

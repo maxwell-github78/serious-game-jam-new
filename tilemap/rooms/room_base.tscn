@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://baej84nvk5j8b" path="res://assets/tilesets/floors.tres" id="1_ppjxj"]
 [ext_resource type="TileSet" uid="uid://p8oo521v1kj7" path="res://assets/tilesets/walls.tres" id="2_jeaxl"]
 [ext_resource type="TileSet" uid="uid://chwhmhjwahrgm" path="res://assets/tilesets/navigation.tres" id="3_65d8r"]
+[ext_resource type="Script" uid="uid://cduuy2gubak1v" path="res://tilemap/player_leave.gd" id="4_a8afw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sf3f"]
 size = Vector2(64, 96)
@@ -27,6 +28,7 @@ tile_set = ExtResource("2_jeaxl")
 position = Vector2(-193, -46)
 
 [node name="PlayerLeave" type="Area2D" parent="." unique_id=1487636693]
+script = ExtResource("4_a8afw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeave" unique_id=498312795]
 position = Vector2(192, -21)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0cbrmpjpxk6b"
-path="res://.godot/imported/Spun-upper-body4.png-7eea3cb678fa6ddded488e19660f59c9.ctex"
+uid="uid://bj3bjul46e561"
+path="res://.godot/imported/spun-upper-body3.png-433ba679f10cf8c2e76b180d829800f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/main-character/upper-body/Spun-upper-body4.png"
-dest_files=["res://.godot/imported/Spun-upper-body4.png-7eea3cb678fa6ddded488e19660f59c9.ctex"]
+source_file="res://assets/textures/main-character/upper-body/spun-upper-body3.png"
+dest_files=["res://.godot/imported/spun-upper-body3.png-433ba679f10cf8c2e76b180d829800f7.ctex"]
 
 [params]
 

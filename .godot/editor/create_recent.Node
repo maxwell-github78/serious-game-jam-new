@@ -1,4 +1,8 @@
+WorldEnvironment
 ColorRect
+Control
+TextureRect
+CanvasLayer
 Node2D
 RigidBody2D
 TileMapLayer
@@ -8,4 +12,3 @@ CollisionShape2D
 Area2D
 CharacterBody2D
 Marker2D
-Camera2D

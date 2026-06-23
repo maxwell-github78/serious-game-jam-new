@@ -72,7 +72,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b686c")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 15.0
 }]
@@ -91,8 +91,6 @@ SCENE_OVERRIDE = ExtResource("2_dakft")
 collision_mask = 5
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=308873463]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2030688207]
 
 [node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1153150159]
 sprite_frames = SubResource("SpriteFrames_hb504")

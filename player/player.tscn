@@ -41,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_65viv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"running",
 "speed": 8.0
 }]
@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_32hag")
 }],
-"loop": true,
+"loop": 1,
 "name": &"running",
 "speed": 5.0
 }]

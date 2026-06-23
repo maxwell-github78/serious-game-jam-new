@@ -1,0 +1,9 @@
+res://assets/tilesets/floors.tres::1b7d39d7050498b1aa6c7fb5aaba98f5::1782151192::res://.godot/exported/133200997/export-fe0277c686578d0890816cb3b3df41fb-floors.res
+res://assets/tilesets/half-height.tres::de9daf8f0025b2c525bdfd64cd99be6a::1782084915::res://.godot/exported/133200997/export-3fe35864c4fcddb28d348e58af918ed8-half-height.res
+res://assets/tilesets/navigation.tres::3adc0093b1ac92eb0f701672e797a1c7::1782151192::res://.godot/exported/133200997/export-bc93f9cb1dfebc583b5e284a7b7f4d34-navigation.res
+res://assets/tilesets/walls.tres::5e249a39174fd66ec6fbebcc67e457df::1782151192::res://.godot/exported/133200997/export-295dd0ae674de24283d0f8ebeb67264d-walls.res
+res://bullet/bullet.tscn::0b9bf0fd14989ee8f04b3b21ba6cb073::1782084052::res://.godot/exported/133200997/export-b76706a2aa0e739961a1ea57e3b62984-bullet.scn
+res://enemy/enemy.tscn::378891714de29bb9f80081757a65d3b8::1782165330::res://.godot/exported/133200997/export-7a7ef7eb2aa2d13d5f77526465e49dfc-enemy.scn
+res://game/game.tscn::4b0c06174b6e002661fba90d18a71a2f::1782165467::res://.godot/exported/133200997/export-3c5491bc1cb430bead51b94ed5d36eda-game.scn
+res://player/player.tscn::6947337fb8457bfa159295230fbfa20c::1782152834::res://.godot/exported/133200997/export-753d15e03e0182f9d550ac833b42bb41-player.scn
+res://tilemap/rooms/room_base.tscn::b807659f6c0c7559eb8a37a4709da84c::1782164658::res://.godot/exported/133200997/export-affe418e77b2290c6e78080a92da1b93-room_base.scn

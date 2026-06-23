@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b7cb03x3cjhjy"]
+
+[node name="UI" type="CanvasLayer" unique_id=928540363]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=361560521]
+visible = false
+offset_left = 258.0
+offset_right = 386.0
+offset_bottom = 128.0

@@ -6,7 +6,7 @@ var parent: Node2D
 var gun_capacity = 6
 var reload_wait_time = 2
 var shoot_interval_time = 0.5
-var gun_knockback_acceleration = 100.0
+var gun_knockback_acceleration = 300.0
 
 var rounds = gun_capacity
 var reload_timer := Timer.new()

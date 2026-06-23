@@ -1,8 +1,10 @@
-res://game/game.tscn
+res://enemy/enemies/gun-she-them.tscn
 res://assets/tilesets/floors.tres
 res://assets/tilesets/walls.tres
 res://assets/tilesets/navigation.tres
+res://enemy/enemy.gd
 res://player/player.tscn
-res://main.tscn
-res://ui.tscn
+res://enemy/enemies/gun-guy.tscn
+res://enemy/enemies/bottle-guy.tscn
+res://game/game.tscn
 res://game/game.gd

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 @export_category("Movement")
 @export var acceleration = 80.0
 @export var max_speed = 200.0
@@ -35,16 +35,11 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	var direction: Vector2
-	direction.x = Input.get_axis("ui_left", "ui_right")
-	direction.y = Input.get_axis("ui_up", "ui_down")
+	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	running = false
-	if direction.x:
-		velocity.x += direction.x * acceleration
-		running = true
-		
-	if direction.y:
-		velocity.y += direction.y * acceleration
+	if direction:
+		velocity += direction * acceleration
 		running = true
 		
 	if running:
@@ -85,6 +80,7 @@ func _look_at_mouse() -> void:
 
 func death() -> void: 
 	print("player dead")
+	game.reset()
 		
 
 

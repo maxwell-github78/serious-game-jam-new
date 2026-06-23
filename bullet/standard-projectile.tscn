@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://drcyp675jwehs"]
+
+[ext_resource type="Script" uid="uid://b00y1eyl4na8o" path="res://bullet/bullet.gd" id="1_ggx48"]
+[ext_resource type="Texture2D" uid="uid://dpdtw2eein0kx" path="res://assets/textures/enemies/enemy-bullet.png" id="2_ys80m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ef7t"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix0ic"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5br11"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irnb8"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b635p"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_468n4"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwsko"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f55so"]
+atlas = ExtResource("2_ys80m")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mcy76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ef7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix0ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5br11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irnb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b635p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_468n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwsko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f55so")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wip1"]
+radius = 7.0
+height = 14.0
+
+[node name="Projectile" type="Area2D" unique_id=2106389084]
+collision_layer = 32
+collision_mask = 5
+script = ExtResource("1_ggx48")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1285564816]
+sprite_frames = SubResource("SpriteFrames_mcy76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=48859625]
+shape = SubResource("CapsuleShape2D_6wip1")

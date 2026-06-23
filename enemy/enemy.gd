@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @export_category("Movement")
 @export var acceleration = 20.0
@@ -7,13 +8,15 @@ extends CharacterBody2D
 @export var random_offset = 32.0
 
 @export_category("Shooting")
+@export var bullet_speed = 200.0
 @export var throw_time = 3.0
 @export var throw_time_randomness = 2.0
 @export var gun_knockback_acceleration = 100.0
-@export var projectile_texture: Texture2D
 @export var projectile_spin: bool = true
+@export var projectile_scene: PackedScene
 
 @export_category("Combat")
+@export var damage: int = 10
 @export var starting_health: int = 20
 @export var balance_value: int = 10
 
@@ -45,6 +48,7 @@ func _ready() -> void:
 	player = game.player
 	
 	navigation.velocity_computed.connect(_move)
+	print(random_offset)
 	offset = Vector2(randf_range(-random_offset, random_offset), randf_range(-random_offset, random_offset))
 	
 	throw_timer.one_shot = true
@@ -52,9 +56,10 @@ func _ready() -> void:
 	add_child(throw_timer)
 	
 	projectiles.parent = self
-	projectiles.texture = projectile_texture
 	projectiles.infinite_ammo = true
 	projectiles.spin = projectile_spin
+	projectiles.bullet_speed = bullet_speed
+	projectiles.packed_bullet = projectile_scene
 	body.animation_finished.connect(_end_throwing)
 
 func throw() -> void:
@@ -83,7 +88,7 @@ func _physics_process(delta: float) -> void:
 	prev_delta = delta
 	
 	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(position, player.position)
+	var query = PhysicsRayQueryParameters2D.create(position, player.position, 1)
 	var result := space_state.intersect_ray(query)
 
 	if result and result.collider == player:
@@ -103,8 +108,7 @@ func _physics_process(delta: float) -> void:
 			path_direction = path_direction.normalized()
 
 			velocity += path_direction * acceleration 
-			
-			velocity -= friction * velocity 
+
 			clamp(velocity.x, -max_speed, max_speed)
 			clamp(velocity.y, -max_speed, max_speed)
 		else:
@@ -113,6 +117,7 @@ func _physics_process(delta: float) -> void:
 		body.play("throwing")
 	else:
 		_stop()
+	velocity -= friction * velocity 
 		
 	if navigation.avoidance_enabled:
 		navigation.velocity = velocity
@@ -131,4 +136,4 @@ func _move(safe_velocity: Vector2) -> void:
 
 func _stop() -> void:
 	body.stop()
-	velocity = Vector2.ZERO
+	#velocity = Vector2.ZERO

@@ -85,6 +85,7 @@ size = Vector2(14, 4)
 collision_mask = 108
 motion_mode = 1
 script = ExtResource("1_onrkg")
+starting_health = 300
 
 [node name="LowerBody" type="AnimatedSprite2D" parent="." unique_id=849554765]
 position = Vector2(-13, 0)

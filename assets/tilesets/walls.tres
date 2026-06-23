@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://p8oo521v1kj7"]
 
-[ext_resource type="Texture2D" uid="uid://3k33pyw55ws4" path="res://assets/textures/room_sheet.png" id="1_h758o"]
-[ext_resource type="Texture2D" uid="uid://liw6hgwws3ub" path="res://assets/textures/rugs.png" id="2_62u4q"]
-[ext_resource type="Texture2D" uid="uid://cxxypyilnahq7" path="res://assets/textures/missing.png" id="2_uxn5k"]
-[ext_resource type="Texture2D" uid="uid://brsr0n3pt8fqb" path="res://assets/textures/obstacles.png" id="3_4gueg"]
+[ext_resource type="Texture2D" uid="uid://3k33pyw55ws4" path="res://assets/textures/rooms/room_sheet.png" id="1_h758o"]
+[ext_resource type="Texture2D" uid="uid://liw6hgwws3ub" path="res://assets/textures/rooms/rugs.png" id="2_62u4q"]
+[ext_resource type="Texture2D" uid="uid://cxxypyilnahq7" path="res://assets/textures/rooms/missing.png" id="2_uxn5k"]
+[ext_resource type="Texture2D" uid="uid://brsr0n3pt8fqb" path="res://assets/textures/rooms/obstacles.png" id="3_4gueg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxn5k"]
 texture = ExtResource("1_h758o")

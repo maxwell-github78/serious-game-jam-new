@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://3hq7r5x4fkkt"]
+
+[ext_resource type="Script" uid="uid://br2ahhhaut1l5" path="res://enemy/enemy.gd" id="1_6d8o0"]
+[ext_resource type="PackedScene" uid="uid://drcyp675jwehs" path="res://bullet/standard-projectile.tscn" id="2_6d8o0"]
+[ext_resource type="Texture2D" uid="uid://b74psax3544d2" path="res://assets/textures/enemies/gun-guy.png" id="3_fo5jk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70n3a"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b6to"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylw2o"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r4o7"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dgu4"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rckr4"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2hha"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixjj7"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwr0g"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ume"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d8o0"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88vhj"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3qg0"]
+atlas = ExtResource("3_fo5jk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70n3a")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b6to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylw2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r4o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dgu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rckr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2hha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixjj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwr0g")
+}],
+"loop": 1,
+"name": &"running",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5ume")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d8o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88vhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3qg0")
+}],
+"loop": 0,
+"name": &"throwing",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
+radius = 12.0
+height = 56.0
+
+[node name="GunGuy" type="CharacterBody2D" unique_id=1113642636]
+collision_layer = 16
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_6d8o0")
+acceleration = 15.0
+max_speed = 100.0
+random_offset = 64.0
+bullet_speed = 300.0
+throw_time = 2.0
+throw_time_randomness = 0.5
+gun_knockback_acceleration = 80.0
+projectile_spin = false
+projectile_scene = ExtResource("2_6d8o0")
+damage = 20
+starting_health = 30
+balance_value = 80
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=849554765]
+position = Vector2(14, 0)
+sprite_frames = SubResource("SpriteFrames_x7c3f")
+animation = &"throwing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815327712]
+shape = SubResource("CapsuleShape2D_qjkh3")
+
+[node name="Bullet Start" type="Marker2D" parent="." unique_id=1032853493]
+position = Vector2(32.5, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=449321536]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1000279519]
+path_desired_distance = 16.0
+target_desired_distance = 64.0
+path_max_distance = 1024.0
+avoidance_enabled = true
+radius = 32.0
+neighbor_distance = 512.0

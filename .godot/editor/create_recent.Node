@@ -1,3 +1,4 @@
+AnimatedSprite2D
 WorldEnvironment
 ColorRect
 Control
@@ -7,7 +8,6 @@ Node2D
 RigidBody2D
 TileMapLayer
 NavigationAgent2D
-AnimatedSprite2D
 CollisionShape2D
 Area2D
 CharacterBody2D

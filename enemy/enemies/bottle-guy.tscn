@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://c085v5vlklir3"]
+
+[ext_resource type="Script" uid="uid://br2ahhhaut1l5" path="res://enemy/enemy.gd" id="1_a6qma"]
+[ext_resource type="PackedScene" uid="uid://du5bjhb6ov1mq" path="res://bullet/bottle.tscn" id="3_2c2j7"]
+[ext_resource type="Texture2D" uid="uid://dsrfu0bt71n7i" path="res://assets/textures/enemies/beer-enemy/beer-enemy1.png" id="3_rljob"]
+[ext_resource type="Texture2D" uid="uid://khwa678ao5m0" path="res://assets/textures/enemies/beer-enemy/beer-enemy2.png" id="4_l82tl"]
+[ext_resource type="Texture2D" uid="uid://5hduxli0td0v" path="res://assets/textures/enemies/beer-enemy/beer-enemy3.png" id="5_baceg"]
+[ext_resource type="Texture2D" uid="uid://d0qouhwk4oek8" path="res://assets/textures/enemies/beer-enemy/beer-enemy4.png" id="6_veg0t"]
+[ext_resource type="Texture2D" uid="uid://cfmioj5o2e1h4" path="res://assets/textures/enemies/beer-enemy/beer-enemy5.png" id="7_j6iay"]
+[ext_resource type="Texture2D" uid="uid://b86x544grupta" path="res://assets/textures/enemies/beer-enemy/beer-enemy6.png" id="8_4cekd"]
+[ext_resource type="Texture2D" uid="uid://r7rhyh42uliq" path="res://assets/textures/enemies/beer-enemy/beer-enemy7.png" id="9_bckpx"]
+[ext_resource type="Texture2D" uid="uid://qgbbbn4c0ro3" path="res://assets/textures/enemies/beer-enemy/beer-enemy8.png" id="10_qlh5u"]
+[ext_resource type="Texture2D" uid="uid://dxj1pqguohowt" path="res://assets/textures/enemies/beer-enemy/beer-enemy9.png" id="11_8rmro"]
+[ext_resource type="Texture2D" uid="uid://hs222yetllqv" path="res://assets/textures/enemies/beer-enemy/beer-enemy10.png" id="12_hwggm"]
+[ext_resource type="Texture2D" uid="uid://bbwglmmy4rqc3" path="res://assets/textures/enemies/beer-enemy/beer-enemy11.png" id="13_3h3y3"]
+[ext_resource type="Texture2D" uid="uid://cnhmj0p2xyodr" path="res://assets/textures/enemies/beer-enemy/beer-enemy12.png" id="14_t4lxg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rljob")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rljob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l82tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_baceg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_veg0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j6iay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4cekd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bckpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qlh5u")
+}],
+"loop": 1,
+"name": &"running",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_8rmro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hwggm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3h3y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t4lxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t4lxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hwggm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8rmro")
+}],
+"loop": 0,
+"name": &"throwing",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
+radius = 11.0
+height = 48.0
+
+[node name="BottleGuy" type="CharacterBody2D" unique_id=1113642636]
+collision_layer = 16
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_a6qma")
+projectile_scene = ExtResource("3_2c2j7")
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=849554765]
+position = Vector2(5, 0)
+sprite_frames = SubResource("SpriteFrames_x7c3f")
+animation = &"throwing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815327712]
+position = Vector2(-3, 0)
+shape = SubResource("CapsuleShape2D_qjkh3")
+
+[node name="Bullet Start" type="Marker2D" parent="." unique_id=1032853493]
+position = Vector2(26, 19)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=449321536]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1000279519]
+path_desired_distance = 16.0
+target_desired_distance = 64.0
+path_max_distance = 1024.0
+avoidance_enabled = true
+radius = 32.0
+neighbor_distance = 512.0

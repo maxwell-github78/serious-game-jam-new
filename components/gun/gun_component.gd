@@ -25,7 +25,6 @@ func _ready() -> void:
 
 func _init() -> void:
 	reload_timer.one_shot = true
-	reload_timer.wait_time = reload_wait_time
 	reload_timer.timeout.connect(reload)
 	add_child(reload_timer)
 	
@@ -39,7 +38,7 @@ func reload() -> void:
 	rounds = gun_capacity
 	if not shoot_timer.is_stopped(): #shoots immediately if held down
 		shoot()
-		shoot_timer.start()
+		shoot_timer.start(reload_wait_time * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_RELOADTIME))
 
 func shoot() -> void:
 	return

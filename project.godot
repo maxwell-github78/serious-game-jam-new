@@ -25,6 +25,13 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_hinting=2
+theme/default_font_generate_mipmaps=true
+theme/custom_font="uid://b5fe4a60qef78"
+
 [input]
 
 ui_left={

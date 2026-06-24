@@ -1,4 +1,5 @@
 extends Resource
+class_name Substance
 
 @export var display_name: String
 @export var texture: Texture2D

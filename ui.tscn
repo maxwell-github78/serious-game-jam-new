@@ -3,10 +3,84 @@
 [ext_resource type="Script" uid="uid://btneu3dg3gdb1" path="res://ui/ui-head.gd" id="1_27fn8"]
 [ext_resource type="Script" uid="uid://cp0eqe08ugvu7" path="res://ui/ui-ammo.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/icons.png" id="2_m6e0p"]
+[ext_resource type="Script" uid="uid://b6yw3qswv1kkr" path="res://ui/ui-pick-substance.gd" id="4_nltto"]
+[ext_resource type="Texture2D" uid="uid://lswh2tgdb6nc" path="res://assets/textures/cursor.png" id="5_n5ude"]
+[ext_resource type="Script" uid="uid://coob6kfnmaefj" path="res://game/pointer.gd" id="6_y4yjw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyqef"]
 atlas = ExtResource("2_m6e0p")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dakft"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5opy"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y36n6"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8g03"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8tme"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vho3"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf6n1"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsp63"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b686c"]
+atlas = ExtResource("5_n5ude")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waa4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dakft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5opy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y36n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8g03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8tme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vho3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf6n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsp63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b686c")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="UI" type="CanvasLayer" unique_id=928540363]
 scale = Vector2(2, 2)
@@ -21,3 +95,16 @@ offset_right = 384.0
 offset_bottom = 360.0
 script = ExtResource("1_fyqef")
 ammo_texture = SubResource("AtlasTexture_fyqef")
+
+[node name="PickSubstance" type="Control" parent="." unique_id=1559180159]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 52.0
+offset_right = 512.0
+offset_bottom = 308.0
+script = ExtResource("4_nltto")
+
+[node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1796636697]
+sprite_frames = SubResource("SpriteFrames_waa4j")
+script = ExtResource("6_y4yjw")

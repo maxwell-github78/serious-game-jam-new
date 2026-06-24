@@ -23,7 +23,20 @@ var room_scenes: Array = Files.read_scenes("res://tilemap/rooms").values()
 
 @export var SCENE_OVERRIDE: PackedScene
 
-var remaining_enemies: int
+signal room_cleared
+
+var picking_substance: bool = false:
+	set(new_value):
+		picking_substance = new_value
+		if new_value: 
+			for child in projectiles.get_children():
+				child.queue_free()
+
+var remaining_enemies: int:
+	set(new_value):
+		remaining_enemies = new_value
+		if new_value == 0:
+			room_cleared.emit()
 			
 func new_room() -> void:
 	room.get_children()[0].queue_free()
@@ -34,10 +47,10 @@ func new_room() -> void:
 		var packed_scene: PackedScene = room_scenes.pick_random()
 		new_room_scene = packed_scene.instantiate()
 	room.add_child(new_room_scene)
-	room = $Room
-	walls = $Room/Tilemap/Walls
-	floors = $Room/Tilemap/Floor
-	start_marker = $Room/Tilemap/PlayerSpawn
+	room = get_child(0)
+	walls = room.get_child(0).get_child(2)
+	floors = room.get_child(0).get_child(0)
+	start_marker = room.get_child(1)
 	player.position = start_marker.global_position
 	_spawn_enemies(current_balance_value)
 	
@@ -53,6 +66,9 @@ func new_room() -> void:
 
 func _ready() -> void:
 	Engine.max_fps = 60
+	StatChanges.init()
+	var substance: Substance = load("res://assets/definitions/substances/test-substance.tres")
+	StatChanges.apply_effects(substance)
 	
 	const bottle_guy: PackedScene = preload("res://enemy/enemies/bottle-guy.tscn") #Stupid way to pad the odds
 	for i in range(2):

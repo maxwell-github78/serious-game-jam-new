@@ -3,79 +3,6 @@
 [ext_resource type="Script" uid="uid://dapndd2maoriy" path="res://game/game.gd" id="1_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://dwwkphdgh33uv" path="res://tilemap/rooms/room_base.tscn" id="2_dakft"]
 [ext_resource type="PackedScene" uid="uid://bd4c81k50wcc5" path="res://player/player.tscn" id="2_dxrkv"]
-[ext_resource type="Texture2D" uid="uid://lswh2tgdb6nc" path="res://assets/textures/cursor.png" id="4_dxrkv"]
-[ext_resource type="Script" uid="uid://coob6kfnmaefj" path="res://game/pointer.gd" id="4_u5opy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dakft"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5opy"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y36n6"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l8g03"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8tme"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vho3"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qf6n1"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vsp63"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b686c"]
-atlas = ExtResource("4_dxrkv")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hb504"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dakft")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5opy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y36n6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l8g03")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j8tme")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3vho3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qf6n1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vsp63")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b686c")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 15.0
-}]
 
 [node name="Game" type="Node2D" unique_id=539578422]
 script = ExtResource("1_4fuuu")
@@ -91,7 +18,3 @@ SCENE_OVERRIDE = ExtResource("2_dakft")
 collision_mask = 5
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=308873463]
-
-[node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1153150159]
-sprite_frames = SubResource("SpriteFrames_hb504")
-script = ExtResource("4_u5opy")

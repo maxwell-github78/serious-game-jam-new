@@ -3,7 +3,6 @@ class_name HitscanComponent
 
 @export_category("Shooting")
 @export var max_range = 1000.0
-@export var damage: int = 10
 
 func shoot() -> void:
 	if rounds > 0 or infinite_ammo: 
@@ -20,7 +19,7 @@ func shoot() -> void:
 			#print("hit: ", result.collider)
 			for child in result.collider.get_children():
 				if child is HealthComponent:
-					child.take_damage(damage)
+					child.take_damage(parent.damage * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_DAMAGE))
 					result.collider.velocity = direction * gun_knockback_acceleration
 			
 		else:

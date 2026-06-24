@@ -95,7 +95,8 @@ func _physics_process(delta: float) -> void:
 		
 	if spotted_player and not throwing:
 		if throw_timer.is_stopped():
-			throw_timer.start(throw_time + randf_range(-throw_time_randomness, throw_time_randomness))
+			var multiplied_throw_time = ( throw_time + randf_range(-throw_time_randomness, throw_time_randomness) ) * StatChanges.get_multiplier(StatChanges.multiplier_keys.ENEMY_FIRE_WAIT_TIME)
+			throw_timer.start(multiplied_throw_time)
 		navigation.target_position = player.position + offset
 		
 		var next := navigation.get_next_path_position()
@@ -106,10 +107,12 @@ func _physics_process(delta: float) -> void:
 			var path_direction: Vector2 = next - position
 			path_direction = path_direction.normalized()
 
-			velocity += path_direction * acceleration 
-
-			clamp(velocity.x, -max_speed, max_speed)
-			clamp(velocity.y, -max_speed, max_speed)
+			velocity += path_direction * acceleration * StatChanges.get_multiplier(StatChanges.multiplier_keys.ENEMY_MOVESPEED)
+			
+			var multiplied_max_speed: float = max_speed * StatChanges.get_multiplier(StatChanges.multiplier_keys.ENEMY_MOVESPEED)
+			clamp(velocity.x, -multiplied_max_speed, multiplied_max_speed)
+			clamp(velocity.y, -multiplied_max_speed, multiplied_max_speed)
+			
 		else:
 			_stop()
 	elif throwing:

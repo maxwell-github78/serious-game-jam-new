@@ -17,7 +17,7 @@ func shoot() -> void:
 		var shoot_direction = Vector2(cos(shoot_rotation), sin(shoot_rotation))
 		shoot_direction = shoot_direction.normalized()
 		bullet.spin = spin
-		bullet.damage = parent.damage
+		bullet.damage = parent.damage * StatChanges.get_multiplier(StatChanges.multiplier_keys.ENEMY_DAMAGE)
 		bullet.position = parent.bullet_start.global_position
 		bullet.rotation = parent.rotation
 		bullet.velocity = shoot_direction * bullet_speed

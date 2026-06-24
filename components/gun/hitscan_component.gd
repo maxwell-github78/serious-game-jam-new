@@ -17,7 +17,7 @@ func shoot() -> void:
 		parent.velocity += -direction * gun_knockback_acceleration
 		if result: 
 			trail = Trail.new(parent.bullet_start.global_position, result.position)
-			print("hit: ", result.collider)
+			#print("hit: ", result.collider)
 			for child in result.collider.get_children():
 				if child is HealthComponent:
 					child.take_damage(damage)

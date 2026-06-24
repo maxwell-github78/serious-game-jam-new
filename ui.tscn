@@ -1,11 +1,23 @@
 [gd_scene format=3 uid="uid://b7cb03x3cjhjy"]
 
+[ext_resource type="Script" uid="uid://btneu3dg3gdb1" path="res://ui/ui-head.gd" id="1_27fn8"]
+[ext_resource type="Script" uid="uid://cp0eqe08ugvu7" path="res://ui/ui-ammo.gd" id="1_fyqef"]
+[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/icons.png" id="2_m6e0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyqef"]
+atlas = ExtResource("2_m6e0p")
+region = Rect2(0, 0, 64, 64)
+
 [node name="UI" type="CanvasLayer" unique_id=928540363]
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("1_27fn8")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=361560521]
-visible = false
-offset_left = 258.0
-offset_right = 386.0
-offset_bottom = 128.0
+[node name="Ammo" type="Control" parent="." unique_id=532375400]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 296.0
+offset_right = 384.0
+offset_bottom = 360.0
+script = ExtResource("1_fyqef")
+ammo_texture = SubResource("AtlasTexture_fyqef")

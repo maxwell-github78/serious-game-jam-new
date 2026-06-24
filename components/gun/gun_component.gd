@@ -8,11 +8,20 @@ var reload_wait_time = 2
 var shoot_interval_time = 0.5
 var gun_knockback_acceleration = 300.0
 
-var rounds = gun_capacity
+signal rounds_changed(value: int)
+var rounds: int: 
+	set(new_value):
+		rounds = new_value
+		rounds_changed.emit(new_value)
+
+		
 var reload_timer := Timer.new()
 var shoot_timer := Timer.new()
 
 var infinite_ammo := false
+
+func _ready() -> void:
+	rounds = gun_capacity
 
 func _init() -> void:
 	reload_timer.one_shot = true

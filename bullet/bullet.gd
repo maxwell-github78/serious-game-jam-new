@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		n += 1
 	
 func collision(body: Node2D) -> void:
-	print("hit projectile: ", body)
+	#print("hit projectile: ", body)
 	for child in body.get_children():
 		if child is HealthComponent:
 			body.velocity = velocity.normalized() * knockback

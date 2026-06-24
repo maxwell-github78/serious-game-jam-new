@@ -48,7 +48,6 @@ func _ready() -> void:
 	player = game.player
 	
 	navigation.velocity_computed.connect(_move)
-	print(random_offset)
 	offset = Vector2(randf_range(-random_offset, random_offset), randf_range(-random_offset, random_offset))
 	
 	throw_timer.one_shot = true

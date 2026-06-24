@@ -55,7 +55,7 @@ func _ready() -> void:
 	Engine.max_fps = 60
 	
 	const bottle_guy: PackedScene = preload("res://enemy/enemies/bottle-guy.tscn") #Stupid way to pad the odds
-	for i in range(5):
+	for i in range(2):
 		enemy_scenes.append(bottle_guy)
 	
 	new_room()

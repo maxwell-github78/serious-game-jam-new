@@ -12,3 +12,6 @@ res://components/gun/gun_component.gd
 res://enemy/enemy.gd
 res://bullet/bullet.gd
 res://components/gun/hitscan_component.gd
+res://game/game.gd
+res://stat-changes.gd
+res://stat-changes/upgrade-definition.gd

@@ -9,7 +9,7 @@ func _ready() -> void:
 	for i in range(max_rounds):
 		var ammo_icon := TextureRect.new()
 		ammo_icon.texture = ammo_texture
-		ammo_icon.position = Vector2(i * 32.0, 0)
+		ammo_icon.position = Vector2(i * 24.0, 0)
 		ammo_array.append(ammo_icon)
 		add_child(ammo_icon)
 		

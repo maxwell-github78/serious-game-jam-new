@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://dn3atyytayu10"]
+
+[ext_resource type="Script" uid="uid://br2ahhhaut1l5" path="res://enemy/enemy.gd" id="1_leo3h"]
+[ext_resource type="PackedScene" uid="uid://drcyp675jwehs" path="res://bullet/standard-projectile.tscn" id="2_fbxw3"]
+[ext_resource type="Texture2D" uid="uid://cxo0bkfvd3mkj" path="res://assets/textures/enemies/gun-woman-sheet.png" id="3_leo3h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbxw3"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t1kq"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkgm8"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lg3h"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhs8j"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxyu6"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e3gx"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l77wu"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5dco"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb2uq"]
+atlas = ExtResource("3_leo3h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbxw3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t1kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkgm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lg3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhs8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxyu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e3gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l77wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5dco")
+}],
+"loop": 1,
+"name": &"running",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb2uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb2uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb2uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb2uq")
+}],
+"loop": 0,
+"name": &"throwing",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
+radius = 11.0
+height = 48.0
+
+[node name="GunSheThem" type="CharacterBody2D" unique_id=1113642636]
+collision_layer = 16
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_leo3h")
+acceleration = 25.0
+max_speed = 150.0
+random_offset = 16.0
+bullet_speed = 300.0
+throw_time = 1.5
+throw_time_randomness = 0.5
+gun_knockback_acceleration = 80.0
+projectile_spin = false
+projectile_scene = ExtResource("2_fbxw3")
+damage = 20
+balance_value = 80
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=849554765]
+position = Vector2(10, 0)
+sprite_frames = SubResource("SpriteFrames_x7c3f")
+animation = &"throwing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815327712]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_qjkh3")
+
+[node name="Bullet Start" type="Marker2D" parent="." unique_id=1032853493]
+position = Vector2(43, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=449321536]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1000279519]
+path_desired_distance = 16.0
+target_desired_distance = 64.0
+path_max_distance = 1024.0
+avoidance_enabled = true
+radius = 32.0
+neighbor_distance = 512.0

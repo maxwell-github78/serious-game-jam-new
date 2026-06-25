@@ -1,9 +1,9 @@
+ColorRect
+TextureRect
 Control
 ItemList
 AnimatedSprite2D
 WorldEnvironment
-ColorRect
-TextureRect
 CanvasLayer
 Node2D
 RigidBody2D

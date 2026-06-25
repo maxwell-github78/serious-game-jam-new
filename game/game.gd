@@ -76,9 +76,8 @@ func new_room() -> void:
 
 func _ready() -> void:
 	Engine.max_fps = 60
-	StatChanges.init()
-	var substance: Substance = load("res://assets/definitions/substances/test-substance.tres")
-	StatChanges.apply_effects(substance)
+	StatChanges.init(self)
+	
 	
 	for key in enemy_scenes:
 		var enemy: Enemy = key.instantiate()
@@ -96,6 +95,7 @@ func _ready() -> void:
 	
 
 func _spawn_enemies(value: int) -> void:
+	var multiplied_value = value * StatChanges.get_multiplier(StatChanges.multiplier_keys.ENEMY_SPAWN_RATE)
 	for child in enemies.get_children():
 		child.queue_free()
 	#Find valid tiles
@@ -119,7 +119,7 @@ func _spawn_enemies(value: int) -> void:
 	
 	var balance: int = 0
 	var n: int = 0
-	while balance < value:
+	while balance < multiplied_value and n < 15:
 		var grid_position: Vector2i = valid_tiles.pick_random()
 		valid_tiles.erase(grid_position)
 		var spawn_position := Vector2(grid_position) * 32.0 
@@ -143,7 +143,7 @@ func reset() -> void:
 	current_balance_value = starting_value
 	player.health_component.max_health = player.starting_health
 	player.health_component.health = player.starting_health
-	StatChanges.init()
+	StatChanges.init(self)
 	new_room()
 
 func _process(_delta: float) -> void:
@@ -152,6 +152,11 @@ func _process(_delta: float) -> void:
 		var enemy: Enemy = enemy_pool.pop_front().instantiate()
 		enemy.position = spawn_position
 		enemies.add_child(enemy)
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		for enemy in enemies.get_children():
+			enemy.queue_free()
+		remaining_enemies = 0
 		
 	
 		

@@ -23,6 +23,11 @@ class_name Player
 @onready var lower: AnimatedSprite2D = $LowerBody
 @onready var upper: AnimatedSprite2D = $UpperBody
 
+var dodge_chance: float = 0.0:
+	set(new_value):
+		dodge_chance = clamp(new_value, 0.0, 0.8)
+		
+
 var running = false
 
 func _ready():
@@ -33,6 +38,7 @@ func _ready():
 	gun.reload_wait_time = reload_wait_time
 	gun.shoot_interval_time = shoot_interval_time
 	gun.gun_knockback_acceleration = gun_knockback_acceleration
+	
 	
 func _physics_process(_delta: float) -> void:
 	var direction: Vector2

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b6yw3qswv1kkr" path="res://ui/ui-pick-substance.gd" id="4_nltto"]
 [ext_resource type="Texture2D" uid="uid://lswh2tgdb6nc" path="res://assets/textures/cursor.png" id="5_n5ude"]
 [ext_resource type="Script" uid="uid://coob6kfnmaefj" path="res://game/pointer.gd" id="6_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://digymrp8n8smr" path="res://assets/textures/full-arts/dizzy-collect-substance.jpg" id="7_bo1jx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyqef"]
 atlas = ExtResource("2_m6e0p")
@@ -96,13 +97,20 @@ offset_bottom = 360.0
 script = ExtResource("1_fyqef")
 ammo_texture = SubResource("AtlasTexture_fyqef")
 
+[node name="DizzySubstance" type="TextureRect" parent="." unique_id=1448926417]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("7_bo1jx")
+expand_mode = 3
+
 [node name="PickSubstance" type="Control" parent="." unique_id=1559180159]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 128.0
-offset_top = 52.0
+offset_top = 24.0
 offset_right = 512.0
-offset_bottom = 308.0
+offset_bottom = 280.0
 script = ExtResource("4_nltto")
 
 [node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1796636697]

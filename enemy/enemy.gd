@@ -89,6 +89,10 @@ func _physics_process(delta: float) -> void:
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(position, player.position, 1)
 	var result := space_state.intersect_ray(query)
+	
+	if game.walls:
+		if not game.walls.local_to_map(position):
+			death()
 
 	if result and result.collider == player:
 		spotted_player = true

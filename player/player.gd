@@ -43,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 		velocity += direction * acceleration * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_MOVESPEED)
 		running = true
 		
-	if running:
+	if running and not game.picking_substance:
 		upper.play("running")
 		lower.play("running")
 	else:

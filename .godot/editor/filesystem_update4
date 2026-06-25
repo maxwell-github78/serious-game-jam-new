@@ -1,11 +1,6 @@
-res://ui.tscn
+res://player/player.tscn
 res://assets/tilesets/floors.tres
 res://assets/tilesets/walls.tres
 res://assets/tilesets/navigation.tres
 res://ui/ui-pick-substance.gd
 res://game/game.gd
-res://player/player.gd
-res://game/game.tscn
-res://utils/files.gd
-res://ui/substance_button.gd
-res://ui/substance-button.gd

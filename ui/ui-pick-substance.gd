@@ -9,17 +9,19 @@ var spacing_width := 160
 var rect_width := 128
 
 const effect_descriptions := {
-	StatChanges.multiplier_keys.PLAYER_DAMAGE: "Dizzy's damage dealt",
-	StatChanges.multiplier_keys.ENEMY_DAMAGE: "Enemy damage dealt",
+	StatChanges.multiplier_keys.PLAYER_DAMAGE: "damage dealt by Dizzy",
+	StatChanges.multiplier_keys.ENEMY_DAMAGE: "damage dealt by Enemies",
 	StatChanges.multiplier_keys.PLAYER_MOVESPEED: "Dizzy's movement speed",
 	StatChanges.multiplier_keys.ENEMY_MOVESPEED: "Enemy movement speed",
 	StatChanges.multiplier_keys.PLAYER_RELOADTIME: "Dizzy's reload time",
 	StatChanges.multiplier_keys.ENEMY_FIRE_WAIT_TIME: "Enemy time to shoot"
 }
 
-const font: Font = preload("res://assets/fonts/kenney-pixel.ttf")
+var font: Font = preload("res://assets/fonts/kenney-pixel.ttf")
+
 
 func _ready() -> void:
+	font.antialiasing = true
 	substances = Files.read_definitions("res://assets/definitions/substances/").values()
 	@warning_ignore("integer_division")
 	position.x = (640 - 3 * spacing_width) / 2
@@ -29,6 +31,11 @@ func setup_signal() -> void:
 
 func show_substances() -> void: 
 	head.game.picking_substance = true
+	var timer := Timer.new()
+	add_child(timer)
+	timer.start(0.3)
+	await timer.timeout
+	timer.queue_free()
 	for i in range(3):
 		var rect := ColorRect.new()
 		rect.color = Color.BLACK
@@ -94,7 +101,6 @@ func show_substances() -> void:
 		rect.add_child(button)
 		
 func _on_chosen_substance(substance: Substance) -> void:
-	print(substance)
 	StatChanges.apply_effects(substance)
 	for rect in get_children():
 		var tween = create_tween()
@@ -109,10 +115,10 @@ func get_effects_text(substance: Substance) -> String:
 		var increase_decrease: String
 		var percentage_change: String
 		if multiplier > 1.0: 
-			increase_decrease = "Increase "
+			increase_decrease = "Increases "
 			percentage_change = var_to_str(int(round((multiplier - 1.0) * 100)))
 		else:
-			increase_decrease = "Decrease "
+			increase_decrease = "Decreases "
 			percentage_change = var_to_str(int(round((1.0 - multiplier) * 100)))
 			
 		var stat_descriptor: String
@@ -123,7 +129,7 @@ func get_effects_text(substance: Substance) -> String:
 		
 		var line: String = increase_decrease + stat_descriptor + " by " + percentage_change + "%\n"
 		string += line
-		print(line)
+
 	return string
 		
 		

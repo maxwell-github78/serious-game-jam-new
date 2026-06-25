@@ -9,7 +9,7 @@ func _ready() -> void:
 	body_exited.connect(_check_if_player_not_inside)
 
 func _process(_delta: float) -> void:
-	if game.remaining_enemies == 0 and player_inside:
+	if game.remaining_enemies == 0 and player_inside and not game.picking_substance:
 		player_inside = false
 		var rect := ColorRect.new()
 		rect.color = Color(0, 0, 0, 0)

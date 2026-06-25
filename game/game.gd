@@ -50,7 +50,7 @@ func new_room() -> void:
 	room = get_child(0)
 	walls = room.get_child(0).get_child(2)
 	floors = room.get_child(0).get_child(0)
-	start_marker = room.get_child(1)
+	start_marker = room.get_child(0).get_child(3)
 	player.position = start_marker.global_position
 	_spawn_enemies(current_balance_value)
 	
@@ -113,6 +113,7 @@ func reset() -> void:
 	current_balance_value = starting_value
 	player.health_component.max_health = player.starting_health
 	player.health_component.health = player.starting_health
+	StatChanges.init()
 	new_room()
 	print("remaining enemies: ", remaining_enemies)
 		

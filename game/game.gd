@@ -39,7 +39,7 @@ var remaining_enemies: int:
 			room_cleared.emit()
 			
 func new_room() -> void:
-	room.get_children()[0].queue_free()
+	room.get_child(0).free()
 	var new_room_scene: Node2D 
 	if SCENE_OVERRIDE != null:
 		new_room_scene = SCENE_OVERRIDE.instantiate()
@@ -51,6 +51,7 @@ func new_room() -> void:
 	walls = room.get_child(0).get_child(2)
 	floors = room.get_child(0).get_child(0)
 	start_marker = room.get_child(0).get_child(3)
+	print(start_marker.position)
 	player.position = start_marker.global_position
 	_spawn_enemies(current_balance_value)
 	

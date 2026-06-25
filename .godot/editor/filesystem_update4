@@ -1,6 +1,8 @@
-res://player/player.tscn
+res://tilemap/rooms/room_base.tscn
+res://tilemap/rooms/room_test.tscn
 res://assets/tilesets/floors.tres
 res://assets/tilesets/walls.tres
 res://assets/tilesets/navigation.tres
-res://ui/ui-pick-substance.gd
+res://game/game.tscn
+res://main.tscn
 res://game/game.gd

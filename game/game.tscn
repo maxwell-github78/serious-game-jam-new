@@ -17,5 +17,6 @@ increase_by = 40
 
 [node name="Player" parent="." unique_id=1113642636 instance=ExtResource("2_dxrkv")]
 collision_mask = 5
+starting_health = 3000
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=308873463]

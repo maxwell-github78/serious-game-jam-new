@@ -17,9 +17,15 @@ var current_balance_value := starting_value
 
 var valid_tiles_dict: Dictionary[Vector2i, bool] = {}
 var valid_tiles: Array[Vector2i]
+var previous_room: PackedScene
+
+var enemy_pool: Array[PackedScene]
+var enemy_positions_pool: Array[Vector2]
+var enemy_balance_values: Dictionary[PackedScene, int]
 
 var enemy_scenes: Array = Files.read_scenes("res://enemy/enemies").values()
 var room_scenes: Array = Files.read_scenes("res://tilemap/rooms").values()
+
 
 @export var SCENE_OVERRIDE: PackedScene
 
@@ -44,7 +50,10 @@ func new_room() -> void:
 	if SCENE_OVERRIDE != null:
 		new_room_scene = SCENE_OVERRIDE.instantiate()
 	else:
-		var packed_scene: PackedScene = room_scenes.pick_random()
+		var valid_room_scenes = room_scenes.duplicate_deep()
+		valid_room_scenes.erase(previous_room)
+		var packed_scene: PackedScene = valid_room_scenes.pick_random()
+		previous_room = packed_scene
 		new_room_scene = packed_scene.instantiate()
 	room.add_child(new_room_scene)
 	room = get_child(0)
@@ -71,9 +80,17 @@ func _ready() -> void:
 	var substance: Substance = load("res://assets/definitions/substances/test-substance.tres")
 	StatChanges.apply_effects(substance)
 	
+	for key in enemy_scenes:
+		var enemy: Enemy = key.instantiate()
+		enemy_balance_values[key] = enemy.balance_value
+		enemy.free()
+	
 	const bottle_guy: PackedScene = preload("res://enemy/enemies/bottle-guy.tscn") #Stupid way to pad the odds
 	for i in range(2):
 		enemy_scenes.append(bottle_guy)
+	
+	current_balance_value = starting_value	
+	
 	
 	new_room()
 	
@@ -108,19 +125,17 @@ func _spawn_enemies(value: int) -> void:
 		var spawn_position := Vector2(grid_position) * 32.0 
 		
 		var offset: Vector2 = spawn_position - player.position
-		if offset.length() < 32.0 * 4:
+		if offset.length() < 32.0 * 8:
 			continue
 		var enemy_pckd_scene = enemy_scenes.pick_random()
-		var enemy: Enemy = enemy_pckd_scene.instantiate()
-		balance += enemy.balance_value 
-		enemy.position = spawn_position
-		enemies.add_child(enemy)
+		#var enemy: Enemy = enemy_pckd_scene.instantiate()
+		balance += enemy_balance_values[enemy_pckd_scene]
+		enemy_pool.append(enemy_pckd_scene)
+		enemy_positions_pool.append(spawn_position)
 		n += 1
 	current_balance_value += increase_by
 	remaining_enemies = n
-	#var test_enemy: Enemy = load("res://enemy/enemies/bottle-guy.tscn").instantiate()
-	#test_enemy.position = Vector2(0, 3000)
-	#enemies.add_child(test_enemy)
+	
 
 func reset() -> void:
 	for child in enemies.get_children():
@@ -130,6 +145,14 @@ func reset() -> void:
 	player.health_component.health = player.starting_health
 	StatChanges.init()
 	new_room()
+
+func _process(_delta: float) -> void:
+	if enemy_pool:
+		var spawn_position: Vector2 = enemy_positions_pool.pop_front()
+		var enemy: Enemy = enemy_pool.pop_front().instantiate()
+		enemy.position = spawn_position
+		enemies.add_child(enemy)
+		
 	
 		
 			

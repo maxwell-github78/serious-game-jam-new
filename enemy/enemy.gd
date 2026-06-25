@@ -90,8 +90,9 @@ func _physics_process(delta: float) -> void:
 	var query = PhysicsRayQueryParameters2D.create(position, player.position, 1)
 	var result := space_state.intersect_ray(query)
 	
-	if game.walls:
-		if not game.walls.local_to_map(position):
+	if game.floors:
+		if not game.floors.local_to_map(global_position) in game.floors.get_used_cells():
+			print("died to being out of bounds")
 			death()
 
 	if result and result.collider == player:

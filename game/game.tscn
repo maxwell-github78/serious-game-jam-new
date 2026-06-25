@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://d0my0skt34y3i"]
 
 [ext_resource type="Script" uid="uid://dapndd2maoriy" path="res://game/game.gd" id="1_4fuuu"]
-[ext_resource type="PackedScene" uid="uid://dwwkphdgh33uv" path="res://tilemap/rooms/room_base.tscn" id="2_dakft"]
 [ext_resource type="PackedScene" uid="uid://bd4c81k50wcc5" path="res://player/player.tscn" id="2_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://dwwkphdgh33uv" path="res://tilemap/debug_rooms/room_base.tscn" id="3_4fuuu"]
 
 [node name="Game" type="Node2D" unique_id=539578422]
 script = ExtResource("1_4fuuu")
+starting_value = 120
+increase_by = 40
 
 [node name="Room" type="Node2D" parent="." unique_id=830116589]
 
-[node name="Tilemap" parent="Room" unique_id=1816029490 instance=ExtResource("2_dakft")]
+[node name="Tilemap" parent="Room" unique_id=1816029490 instance=ExtResource("3_4fuuu")]
 
 [node name="Enemies" type="Node2D" parent="." unique_id=939677875]
 

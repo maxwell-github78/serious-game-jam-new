@@ -6,3 +6,6 @@ res://assets/tilesets/navigation.tres
 res://game/game.tscn
 res://main.tscn
 res://game/game.gd
+res://tilemap/debug_rooms/room_test.tscn
+res://enemy/enemy.gd
+res://tilemap/debug_rooms/room_base.tscn

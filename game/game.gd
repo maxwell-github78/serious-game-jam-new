@@ -82,19 +82,28 @@ func _spawn_enemies(value: int) -> void:
 	for child in enemies.get_children():
 		child.queue_free()
 	#Find valid tiles
+	valid_tiles_dict.clear()
+	valid_tiles.clear()
 	for tile in floors.get_used_cells():
-		valid_tiles_dict[tile] = true
+		if tile != Vector2i(-1, -1):
+			valid_tiles_dict[tile] = true
+		else:
+			valid_tiles_dict[tile] = false
 	for tile in walls.get_used_cells():
 		if valid_tiles_dict.has(tile):
 			valid_tiles_dict[tile] = false
 	for tile in valid_tiles_dict.keys():
 		if valid_tiles_dict[tile]:
 			valid_tiles.append(tile)
+			
+	for tile in valid_tiles:
+		if floors.local_to_map(tile*32.0) == Vector2i(-1, -1):
+			print("Spawning enemies on invalid tile")
 	
 	var balance: int = 0
 	var n: int = 0
 	while balance < value:
-		var grid_position = valid_tiles.pick_random()
+		var grid_position: Vector2i = valid_tiles.pick_random()
 		valid_tiles.erase(grid_position)
 		var spawn_position := Vector2(grid_position) * 32.0 
 		
@@ -109,13 +118,18 @@ func _spawn_enemies(value: int) -> void:
 		n += 1
 	current_balance_value += increase_by
 	remaining_enemies = n
+	#var test_enemy: Enemy = load("res://enemy/enemies/bottle-guy.tscn").instantiate()
+	#test_enemy.position = Vector2(0, 3000)
+	#enemies.add_child(test_enemy)
 
 func reset() -> void:
+	for child in enemies.get_children():
+		child.queue_free()
 	current_balance_value = starting_value
 	player.health_component.max_health = player.starting_health
 	player.health_component.health = player.starting_health
 	StatChanges.init()
 	new_room()
-	print("remaining enemies: ", remaining_enemies)
+	
 		
 			

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://b37f5nyjrrc4u"
+path="res://.godot/imported/start-mask.png-ab418a2fd025f408b5c55cbac480215f.res"
+
+[deps]
+
+source_file="res://assets/textures/main-menu/start-mask.png"
+dest_files=["res://.godot/imported/start-mask.png-ab418a2fd025f408b5c55cbac480215f.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

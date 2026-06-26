@@ -37,12 +37,15 @@ var rooms_cleared: int = 0:
 	set(new_value):
 		rooms_cleared = new_value
 		if new_value == rooms_to_beat:
-			print("beat the game")
+			game_won.emit()
+			get_tree().change_scene_to_file("res://main_menu.tscn")
 
 
 @export var SCENE_OVERRIDE: PackedScene
 
 signal room_cleared
+signal game_over
+signal game_won
 
 var picking_substance: bool = false:
 	set(new_value):
@@ -155,6 +158,8 @@ func _spawn_enemies(value: int) -> void:
 	
 
 func reset() -> void:
+	game_over.emit()
+	$Music.play(0.0)
 	resetting = true
 	rooms_cleared = 0
 	for child in enemies.get_children() + projectiles.get_children():

@@ -17,22 +17,50 @@ var read_input: bool = true
 func _ready() -> void:
 	window_dimensions = DisplayServer.window_get_size()
 	fullscreen_toggle.pressed.connect(toggle_fullscreen)
+	_on_window_change()
 	master_slider.min_value = -12.0
 	master_slider.max_value = 12.0
+	master_slider.value = AudioServer.get_bus_volume_db(0)
 	master_slider.value_changed.connect(
 		func(value): AudioServer.set_bus_volume_db(0, value)
 			)
 	sound_slider.min_value = -12.0
 	sound_slider.max_value = 12.0
+	sound_slider.value = AudioServer.get_bus_volume_db(1)
 	sound_slider.value_changed.connect(
 		func(value): AudioServer.set_bus_volume_db(1, value)
 			)
 	music_slider.min_value = -12.0
 	music_slider.max_value = 12.0
+	music_slider.value = AudioServer.get_bus_volume_db(2)
 	music_slider.value_changed.connect(
 		func(value): AudioServer.set_bus_volume_db(2, value)
 			)
 	return_mm.button_down.connect(unpause)
+	
+	master_slider.value_changed.connect(
+		func(value): check_for_silence(master_slider, value)
+	)
+	sound_slider.value_changed.connect(
+		func(value): check_for_silence(sound_slider, value)
+	)
+	music_slider.value_changed.connect(
+		func(value): check_for_silence(music_slider, value)
+	)
+	
+func check_for_silence(slider: HSlider, value: float) -> void:
+	var bus: int
+	match slider:
+		master_slider:
+			bus = 0
+		sound_slider:
+			bus = 1
+		music_slider:
+			bus = 2
+	if value == slider.min_value:
+		AudioServer.set_bus_mute(bus, true)
+	else:
+		AudioServer.set_bus_mute(bus, false)
 
 func unpause() -> void: 
 	if read_input:
@@ -50,6 +78,7 @@ func toggle_fullscreen() -> void:
 
 func on_pause_changed(value: bool) -> void:
 	if value: 
+		_on_window_change()
 		get_tree().paused = true
 		mouse_filter = Control.MOUSE_FILTER_STOP
 		dim.visible = true

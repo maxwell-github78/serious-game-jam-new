@@ -65,7 +65,7 @@ func _ready() -> void:
 	body.animation_finished.connect(_end_throwing)
 	
 	if elite:
-		modulate = Color.YELLOW
+		body.material.set_shader_parameter("toggle", true)
 		health_component.max_health *= 2
 		health_component.health *= 2
 

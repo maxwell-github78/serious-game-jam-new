@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cvl75u6hiq7xk"
+path="res://.godot/imported/options-mask.png-03140a0f9f86225472ffcf9df4609cc9.res"
+
+[deps]
+
+source_file="res://assets/textures/main-menu/options-mask.png"
+dest_files=["res://.godot/imported/options-mask.png-03140a0f9f86225472ffcf9df4609cc9.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

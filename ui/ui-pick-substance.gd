@@ -32,7 +32,7 @@ const effect_descriptions := {
 	StatChanges.multiplier_keys.ENEMY_PROJECTILE_SPEED: "the speed of Enemy projectiles",
 	StatChanges.multiplier_keys.PLAYER_HEALTH: "Dizzy's hitpoints",
 	StatChanges.multiplier_keys.PLAYER_DODGE_CHANCE: "Dizzy's chance to dodge projectiles",
-	StatChanges.multiplier_keys.PLAYER_DEATH_TIME: "the rate at which Dizzy passively loses health"
+	StatChanges.multiplier_keys.PLAYER_DEATH_RATE: "the rate at which Dizzy passively loses health"
 }
 
 var font: Font = preload("res://assets/fonts/kenney-pixel.ttf")

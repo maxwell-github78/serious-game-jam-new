@@ -11,7 +11,7 @@ enum multiplier_keys {
 	ENEMY_PROJECTILE_SPEED, 
 	PLAYER_HEALTH, 
 	PLAYER_DODGE_CHANCE,
-	PLAYER_DEATH_TIME,
+	PLAYER_DEATH_RATE,
 }
 
 const add_instead: Array[multiplier_keys] = [multiplier_keys.PLAYER_HEALTH, multiplier_keys.PLAYER_DODGE_CHANCE]

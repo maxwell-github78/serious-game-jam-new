@@ -14,6 +14,6 @@ func _process(_delta: float) -> void:
 			var scene := ResourceLoader.load_threaded_get(next_scene_path)
 			get_tree().change_scene_to_packed(scene)
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			print(progress[0] * 100.0)
+			#print(progress[0] * 100.0)
 			progress_bar.value = progress[0] * 100.0
 			

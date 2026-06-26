@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://br2ahhhaut1l5" path="res://enemy/enemy.gd" id="1_a6qma"]
 [ext_resource type="PackedScene" uid="uid://du5bjhb6ov1mq" path="res://bullet/bottle.tscn" id="3_2c2j7"]
+[ext_resource type="Shader" uid="uid://cgauu6r13fafi" path="res://assets/shaders/elite.gdshader" id="3_l82tl"]
 [ext_resource type="Texture2D" uid="uid://dsrfu0bt71n7i" path="res://assets/textures/enemies/beer-enemy/beer-enemy1.png" id="3_rljob"]
 [ext_resource type="Texture2D" uid="uid://khwa678ao5m0" path="res://assets/textures/enemies/beer-enemy/beer-enemy2.png" id="4_l82tl"]
 [ext_resource type="Texture2D" uid="uid://5hduxli0td0v" path="res://assets/textures/enemies/beer-enemy/beer-enemy3.png" id="5_baceg"]
@@ -15,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bbwglmmy4rqc3" path="res://assets/textures/enemies/beer-enemy/beer-enemy11.png" id="13_3h3y3"]
 [ext_resource type="Texture2D" uid="uid://cnhmj0p2xyodr" path="res://assets/textures/enemies/beer-enemy/beer-enemy12.png" id="14_t4lxg"]
 [ext_resource type="AudioStream" uid="uid://dbw2023c14do0" path="res://assets/sounds/enemy-shoot.mp3" id="15_2c2j7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2c2j7"]
+shader = ExtResource("3_l82tl")
+shader_parameter/toggle = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
 animations = [{
@@ -92,8 +97,10 @@ collision_mask = 29
 motion_mode = 1
 script = ExtResource("1_a6qma")
 projectile_scene = ExtResource("3_2c2j7")
+balance_value = 20
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=849554765]
+material = SubResource("ShaderMaterial_2c2j7")
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_x7c3f")
 animation = &"throwing"

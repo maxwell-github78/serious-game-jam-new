@@ -52,7 +52,7 @@ func _ready():
 
 func reset_timer() -> void:
 	damage_timer.start(time_between_damage)
-	health_component.take_damage(0.5 * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_DEATH_TIME))
+	health_component.take_damage(0.5 * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_DEATH_RATE))
 	
 	
 func _physics_process(_delta: float) -> void:

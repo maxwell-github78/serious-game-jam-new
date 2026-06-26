@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://digymrp8n8smr" path="res://assets/textures/full-arts/dizzy-collect-substance.jpg" id="7_bo1jx"]
 [ext_resource type="Script" uid="uid://bubmbg4wykpkb" path="res://ui/pause.gd" id="10_x7jpl"]
 [ext_resource type="Texture2D" uid="uid://18ws8apfot4y" path="res://assets/textures/tickbox.png" id="11_os0ka"]
+[ext_resource type="Script" uid="uid://djovwt4aruwql" path="res://ui/screens.gd" id="12_diyc5"]
 [ext_resource type="AudioStream" uid="uid://dcmo1yosfm4mk" path="res://assets/sounds/wheel.mp3" id="12_hrmpd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyqef"]
@@ -219,6 +220,14 @@ layout_mode = 2
 [node name="ReturnMainMenu" type="Button" parent="Pause/ColorRect/VBoxContainer" unique_id=11847560]
 layout_mode = 2
 text = "Quit run"
+
+[node name="Screens" type="TextureRect" parent="." unique_id=1641735221]
+process_mode = 3
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_diyc5")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1796636697]
 process_mode = 3

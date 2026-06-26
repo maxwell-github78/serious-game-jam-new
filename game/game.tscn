@@ -8,8 +8,8 @@
 
 [node name="Game" type="Node2D" unique_id=539578422]
 script = ExtResource("1_4fuuu")
-starting_value = 120
-increase_by = 25
+starting_value = 160
+increase_by = 35
 
 [node name="Room" type="Node2D" parent="." unique_id=830116589]
 

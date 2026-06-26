@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://btneu3dg3gdb1" path="res://ui/ui-head.gd" id="1_27fn8"]
 [ext_resource type="Script" uid="uid://cp0eqe08ugvu7" path="res://ui/ui-ammo.gd" id="1_fyqef"]
-[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/icons.png" id="2_m6e0p"]
+[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/substance/icons.png" id="2_m6e0p"]
+[ext_resource type="Script" uid="uid://1yhpyfn8kf0w" path="res://ui/health_bar.gd" id="4_ay4pc"]
 [ext_resource type="Script" uid="uid://b6yw3qswv1kkr" path="res://ui/ui-pick-substance.gd" id="4_nltto"]
+[ext_resource type="Texture2D" uid="uid://ddsaghnpdl2bg" path="res://assets/textures/health-bar/health-bar-bottom.png" id="4_pa1oa"]
+[ext_resource type="Texture2D" uid="uid://c8ysmgvslm3ts" path="res://assets/textures/health-bar/health-bar-top.png" id="5_ay4pc"]
 [ext_resource type="Texture2D" uid="uid://lswh2tgdb6nc" path="res://assets/textures/cursor.png" id="5_n5ude"]
 [ext_resource type="Script" uid="uid://coob6kfnmaefj" path="res://game/pointer.gd" id="6_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://darliv6dw2iti" path="res://assets/textures/health-bar/skull.png" id="7_bi8hs"]
 [ext_resource type="Texture2D" uid="uid://digymrp8n8smr" path="res://assets/textures/full-arts/dizzy-collect-substance.jpg" id="7_bo1jx"]
+[ext_resource type="AudioStream" uid="uid://bdnvjxl3o855j" path="res://assets/sounds/wheel.wav" id="12_hrmpd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyqef"]
 atlas = ExtResource("2_m6e0p")
@@ -97,6 +102,28 @@ offset_bottom = 360.0
 script = ExtResource("1_fyqef")
 ammo_texture = SubResource("AtlasTexture_fyqef")
 
+[node name="HealthBar" type="Control" parent="." unique_id=47718022]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_ay4pc")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar" unique_id=261501940]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 234.0
+offset_bottom = 64.0
+texture_under = ExtResource("4_pa1oa")
+texture_progress = ExtResource("5_ay4pc")
+
+[node name="TextureRect" type="TextureRect" parent="HealthBar" unique_id=456428894]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 88.0
+offset_bottom = 64.0
+texture = ExtResource("7_bi8hs")
+
 [node name="DizzySubstance" type="TextureRect" parent="." unique_id=1448926417]
 visible = false
 offset_right = 640.0
@@ -116,3 +143,8 @@ script = ExtResource("4_nltto")
 [node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1796636697]
 sprite_frames = SubResource("SpriteFrames_waa4j")
 script = ExtResource("6_y4yjw")
+
+[node name="WheelSound" type="AudioStreamPlayer2D" parent="." unique_id=416441876]
+position = Vector2(128, 24)
+stream = ExtResource("12_hrmpd")
+bus = &"Sound Effects"

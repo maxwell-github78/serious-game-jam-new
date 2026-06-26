@@ -5,6 +5,8 @@ var substances: Array
 
 @onready var head: UIHead = $".."
 @onready var dizzy: TextureRect = $"../DizzySubstance"
+@onready var wheel_sound: AudioStreamPlayer2D = $"../WheelSound"
+@onready var tick_sound: AudioStreamPlayer2D = $"../TickSound"
 
 var spacing_width := 160
 var rect_width := 128
@@ -25,11 +27,12 @@ const effect_descriptions := {
 	StatChanges.multiplier_keys.PLAYER_MOVESPEED: "Dizzy's movement speed",
 	StatChanges.multiplier_keys.ENEMY_MOVESPEED: "the Enemy's movement speed",
 	StatChanges.multiplier_keys.PLAYER_RELOADTIME: "Dizzy's reload time",
-	StatChanges.multiplier_keys.ENEMY_FIRE_WAIT_TIME: "the Enemy's time to shoot",
+	StatChanges.multiplier_keys.ENEMY_FIRE_WAIT_TIME: "the time between Enemy's shots",
 	StatChanges.multiplier_keys.ENEMY_SPAWN_RATE: "the difficulty of each room",
 	StatChanges.multiplier_keys.ENEMY_PROJECTILE_SPEED: "the speed of Enemy projectiles",
 	StatChanges.multiplier_keys.PLAYER_HEALTH: "Dizzy's hitpoints",
-	StatChanges.multiplier_keys.PLAYER_DODGE_CHANCE: "Dizzy's chance to dodge projectiles"
+	StatChanges.multiplier_keys.PLAYER_DODGE_CHANCE: "Dizzy's chance to dodge projectiles",
+	StatChanges.multiplier_keys.PLAYER_DEATH_TIME: "the rate at which Dizzy passively loses health"
 }
 
 var font: Font = preload("res://assets/fonts/kenney-pixel.ttf")
@@ -54,7 +57,7 @@ func show_substances() -> void:
 	for i in range(3):
 		var rect := ColorRect.new()
 		rect.color = Color.BLACK
-		rect.size = Vector2(rect_width, 270)
+		rect.size = Vector2(rect_width, 360-24)
 		rect.position = Vector2(i * spacing_width, 360)
 		@warning_ignore("integer_division")
 		rect.position.x += (spacing_width - rect_width) / 2
@@ -92,7 +95,7 @@ func show_substances() -> void:
 		rect.add_child(name_text)
 		
 		var effects_text := RichTextLabel.new()
-		effects_text.size = Vector2(108, 128)
+		effects_text.size = Vector2(108, 256)
 		effects_text.position.y = flavour_text.position.y + flavour_text.size.y + 10
 		effects_text.position.x = 10
 		effects_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -153,6 +156,7 @@ func handle_dosage(dosage: float):
 	add_child(timer)
 	timer.start(0.5)
 	await timer.timeout
+	wheel_sound.playing = true
 	StatChanges.apply_effects(chosen, dosage)
 	for child in dizzy.get_children():
 		child.queue_free()

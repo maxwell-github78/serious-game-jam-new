@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://c5b51ceur1uxl"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_njii1"]
+[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/substance/icons.png" id="2_bmpw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cox7"]
+atlas = ExtResource("2_bmpw6")
+region = Rect2(128, 0, 64, 64)
+
+[resource]
+script = ExtResource("1_njii1")
+display_name = "Lollipop"
+texture = SubResource("AtlasTexture_0cox7")
+effects = Dictionary[int, float]({
+0: 1.4,
+1: 1.25
+})
+flavour_text = "Suck on it"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

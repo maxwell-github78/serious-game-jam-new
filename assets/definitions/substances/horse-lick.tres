@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://vrs0218qufsp"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_1xtmd"]
+[ext_resource type="Texture2D" uid="uid://d4h0aklmeqw54" path="res://assets/textures/substance/more-icons.png" id="2_ejfm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi8hs"]
+atlas = ExtResource("2_ejfm4")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+script = ExtResource("1_1xtmd")
+display_name = "Horse Lick"
+texture = SubResource("AtlasTexture_bi8hs")
+effects = Dictionary[int, float]({
+0: 1.3,
+1: 1.2,
+2: 1.1,
+6: 1.2,
+10: 0.8
+})
+flavour_text = "ARGH"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

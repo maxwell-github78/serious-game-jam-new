@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://dqrfp6jkoqp7p"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_lrfno"]
+[ext_resource type="Texture2D" uid="uid://d4h0aklmeqw54" path="res://assets/textures/substance/more-icons.png" id="2_l0724"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi8hs"]
+atlas = ExtResource("2_l0724")
+region = Rect2(0, 64, 64, 64)
+
+[resource]
+script = ExtResource("1_lrfno")
+display_name = "Breath Mint"
+texture = SubResource("AtlasTexture_bi8hs")
+effects = Dictionary[int, float]({
+0: 0.75,
+2: 1.15,
+3: 1.2,
+4: 0.6
+})
+flavour_text = "Cool"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

@@ -8,6 +8,7 @@ class_name Player
 @export_category("Combat")
 @export var starting_health: int = 100
 @export var damage: int = 10
+@export var time_between_damage: float = 0.1
 
 @export_category("Shooting")
 @export var gun_capacity = 6
@@ -23,12 +24,15 @@ class_name Player
 @onready var lower: AnimatedSprite2D = $LowerBody
 @onready var upper: AnimatedSprite2D = $UpperBody
 
+@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+
 var dodge_chance: float = 0.0:
 	set(new_value):
 		dodge_chance = clamp(new_value, 0.0, 0.8)
 		
 
 var running = false
+var damage_timer := Timer.new()
 
 func _ready():
 	add_child(gun)
@@ -38,6 +42,14 @@ func _ready():
 	gun.reload_wait_time = reload_wait_time
 	gun.shoot_interval_time = shoot_interval_time
 	gun.gun_knockback_acceleration = gun_knockback_acceleration
+	
+	damage_timer.timeout.connect(reset_timer)
+	add_child(damage_timer)
+	damage_timer.start(time_between_damage)
+
+func reset_timer() -> void:
+	damage_timer.start(time_between_damage)
+	health_component.take_damage(0.5 * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_DEATH_TIME))
 	
 	
 func _physics_process(_delta: float) -> void:
@@ -70,15 +82,17 @@ func _process(_delta: float) -> void:
 	
 	if gun.rounds == 0 and gun.reload_timer.is_stopped() and not game.picking_substance:
 		print("reloading")
-		gun.reload_timer.start()		
+		gun.reload_timer.start(reload_wait_time * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_RELOADTIME))		
 	
 	if not game.picking_substance: 
+		damage_timer.paused = false
 		if Input.is_action_just_pressed("ui_shoot"):
 			gun.shoot_timer.start()
 			gun.shoot()
 		if Input.is_action_just_released("ui_shoot"):
 			gun.shoot_timer.stop()
 	else:
+		damage_timer.paused = true
 		gun.shoot_timer.stop()
 		
 	if Input.is_action_just_pressed("ui_cancel"):

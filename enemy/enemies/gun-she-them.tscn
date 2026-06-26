@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://br2ahhhaut1l5" path="res://enemy/enemy.gd" id="1_a36pf"]
 [ext_resource type="PackedScene" uid="uid://drcyp675jwehs" path="res://bullet/standard-projectile.tscn" id="2_sndoo"]
+[ext_resource type="AudioStream" uid="uid://cskao0ard2m4d" path="res://assets/sounds/enemy-shoot.wav" id="4_saotl"]
 [ext_resource type="Texture2D" uid="uid://2nse1kpc3glg" path="res://assets/textures/enemies/gun-she-them.png" id="4_sndoo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a36pf"]
@@ -145,3 +146,7 @@ path_max_distance = 1024.0
 avoidance_enabled = true
 radius = 32.0
 neighbor_distance = 512.0
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1494704033]
+stream = ExtResource("4_saotl")
+bus = &"Sound Effects"

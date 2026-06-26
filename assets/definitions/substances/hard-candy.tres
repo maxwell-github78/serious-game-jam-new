@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://doo16l4bqiftf"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_c2qbu"]
+[ext_resource type="Texture2D" uid="uid://dx5oyu6n0jlav" path="res://assets/textures/substance/hard-candy.png" id="2_ouc68"]
+
+[resource]
+script = ExtResource("1_c2qbu")
+display_name = "Hard Candy"
+texture = ExtResource("2_ouc68")
+effects = Dictionary[int, float]({
+0: 0.6,
+8: 200.0,
+10: 0.9
+})
+flavour_text = "*CRUNCH*"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

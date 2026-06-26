@@ -10,6 +10,7 @@ var spin: bool
 
 func shoot() -> void:
 	if rounds > 0 or infinite_ammo:
+		parent.shoot_sound.playing = true
 		rounds -= 1
 		var bullet: Bullet = packed_bullet.instantiate()
 		parent.game.projectiles.add_child(bullet)

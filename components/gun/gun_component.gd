@@ -41,4 +41,6 @@ func reload() -> void:
 		shoot_timer.start(reload_wait_time * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_RELOADTIME))
 
 func shoot() -> void:
+	#parent.shoot_sound.playing = true
 	return
+	

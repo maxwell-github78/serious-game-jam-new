@@ -29,6 +29,7 @@ class_name Enemy
 @onready var body: AnimatedSprite2D = $Body
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var player: CharacterBody2D
+@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
 
 var projectiles := ProjectileComponent.new()
 
@@ -80,6 +81,7 @@ func _process(_delta: float) -> void:
 		throw()
 
 func death() -> void: 
+	game.player.health_component.take_damage(-balance_value)
 	game.remaining_enemies -= 1
 	queue_free()
 	

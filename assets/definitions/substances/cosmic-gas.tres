@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://cjsfamh58ttks"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_8a4v3"]
+[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/substance/icons.png" id="2_go4qt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go4qt"]
+atlas = ExtResource("2_go4qt")
+region = Rect2(0, 128, 64, 64)
+
+[resource]
+script = ExtResource("1_8a4v3")
+display_name = "Cosmic Gas"
+texture = SubResource("AtlasTexture_go4qt")
+effects = Dictionary[int, float]({
+2: 0.9,
+3: 0.75,
+4: 1.1,
+5: 1.5
+})
+flavour_text = "Wh-? Huh?"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

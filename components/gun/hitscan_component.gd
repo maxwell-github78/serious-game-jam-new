@@ -6,6 +6,7 @@ class_name HitscanComponent
 
 func shoot() -> void:
 	if rounds > 0 or infinite_ammo: 
+		parent.shoot_sound.playing = true
 		rounds -= 1
 		var direction := get_global_mouse_position() - parent.position 
 		direction = direction.normalized()

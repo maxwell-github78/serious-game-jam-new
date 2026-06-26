@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bltofsgkm5mgr" path="res://assets/textures/main-character/upper-body/spun-upper-body2.png" id="11_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://bj3bjul46e561" path="res://assets/textures/main-character/upper-body/spun-upper-body3.png" id="12_wodsf"]
 [ext_resource type="Texture2D" uid="uid://bxv0613mi1og0" path="res://assets/textures/main-character/upper-body/spun-upper-body4.png" id="13_32hag"]
+[ext_resource type="AudioStream" uid="uid://c8u4nb6sp3hhu" path="res://assets/sounds/laserShoot.wav" id="14_kb6p2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
 animations = [{
@@ -118,3 +119,7 @@ shape = SubResource("CapsuleShape2D_yllr7")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1263726478]
 position = Vector2(25, 0)
 shape = SubResource("RectangleShape2D_yllr7")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1691468866]
+stream = ExtResource("14_kb6p2")
+bus = &"Sound Effects"

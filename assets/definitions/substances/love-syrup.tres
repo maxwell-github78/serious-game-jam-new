@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://d3a4qfoo2k8ye"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_tqklp"]
+[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/substance/icons.png" id="2_vrdnn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrdnn"]
+atlas = ExtResource("2_vrdnn")
+region = Rect2(64, 64, 64, 64)
+
+[resource]
+script = ExtResource("1_tqklp")
+display_name = "Love Syrup"
+texture = SubResource("AtlasTexture_vrdnn")
+effects = Dictionary[int, float]({
+4: 1.05,
+7: 0.85
+})
+flavour_text = "Sticky Sticky"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://bapa2hmp8ked0"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_s67a0"]
+[ext_resource type="Texture2D" uid="uid://bqvvsukwnuo04" path="res://assets/textures/substance/icons.png" id="2_eqs2t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqs2t"]
+atlas = ExtResource("2_eqs2t")
+region = Rect2(0, 64, 64, 64)
+
+[resource]
+script = ExtResource("1_s67a0")
+display_name = "Crystal Rock Candy"
+texture = SubResource("AtlasTexture_eqs2t")
+effects = Dictionary[int, float]({
+4: 0.7,
+5: 0.8
+})
+flavour_text = "(Candy)"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

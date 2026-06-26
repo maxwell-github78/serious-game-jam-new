@@ -25,6 +25,7 @@ class_name Player
 @onready var upper: AnimatedSprite2D = $UpperBody
 
 @onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+@onready var path_out: Node2D = $"../PathOut"
 
 var dodge_chance: float = 0.0:
 	set(new_value):
@@ -35,6 +36,8 @@ var running = false
 var damage_timer := Timer.new()
 
 func _ready():
+	path_out.player = self
+	
 	add_child(gun)
 	add_child(health_component)
 	gun.parent = self
@@ -97,6 +100,13 @@ func _process(_delta: float) -> void:
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+	
+	if not game.picking_substance and game.remaining_enemies == 0:
+		path_out.out = game.player_leave
+		#print(game.player_leave)
+		path_out.visible = true
+	else:
+		path_out.visible = false
 
 	
 func _look_at_mouse() -> void:

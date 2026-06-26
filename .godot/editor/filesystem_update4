@@ -27,3 +27,7 @@ res://enemy/enemy.gd
 res://enemy/enemies/gun-she-them.tscn
 res://enemy/enemies/bottle-guy.tscn
 res://enemy/enemies/gun-guy.tscn
+res://game/game.gd
+res://tilemap/debug_rooms/room_base.tscn
+res://player/path-out.gd
+res://tilemap/player_leave.gd

@@ -8,6 +8,7 @@ class_name Game
 @onready var walls: TileMapLayer = $Room/Tilemap/Walls
 @onready var floors: TileMapLayer = $Room/Tilemap/Floor
 @onready var start_marker: Node2D = $Room/Tilemap/PlayerSpawn
+@onready var player_leave: Area2D = $Room/Tilemap/PlayerLeave
 
 @export_category("Difficulty Scaling")
 @export var starting_value: int = 40
@@ -60,7 +61,7 @@ func new_room() -> void:
 	walls = room.get_child(0).get_child(2)
 	floors = room.get_child(0).get_child(0)
 	start_marker = room.get_child(0).get_child(3)
-	print(start_marker.position)
+	player_leave = room.get_child(0).get_child(4)
 	player.position = start_marker.global_position
 	_spawn_enemies(current_balance_value)
 	

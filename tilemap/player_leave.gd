@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var game: Game = $"../../.."
 @onready var player: CharacterBody2D = game.player
+@onready var shape: CollisionShape2D = $CollisionShape2D
 var player_inside: bool = false
 
 func _ready() -> void:

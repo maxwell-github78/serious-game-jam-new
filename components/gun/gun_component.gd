@@ -34,7 +34,7 @@ func _init() -> void:
 	add_child(shoot_timer)
 
 func reload() -> void:
-	print("reloaded")
+	#print("reloaded")
 	rounds = gun_capacity
 	if not shoot_timer.is_stopped(): #shoots immediately if held down
 		shoot()

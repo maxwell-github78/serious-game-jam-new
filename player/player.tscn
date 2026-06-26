@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bltofsgkm5mgr" path="res://assets/textures/main-character/upper-body/spun-upper-body2.png" id="11_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://bj3bjul46e561" path="res://assets/textures/main-character/upper-body/spun-upper-body3.png" id="12_wodsf"]
 [ext_resource type="Texture2D" uid="uid://bxv0613mi1og0" path="res://assets/textures/main-character/upper-body/spun-upper-body4.png" id="13_32hag"]
-[ext_resource type="AudioStream" uid="uid://c8u4nb6sp3hhu" path="res://assets/sounds/laserShoot.wav" id="14_kb6p2"]
+[ext_resource type="AudioStream" uid="uid://dv8srhtsikg85" path="res://assets/sounds/laserShoot.mp3" id="14_kb6p2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
 animations = [{
@@ -87,6 +87,7 @@ collision_mask = 108
 motion_mode = 1
 script = ExtResource("1_onrkg")
 starting_health = 300
+time_between_damage = 0.2
 
 [node name="LowerBody" type="AnimatedSprite2D" parent="." unique_id=849554765]
 position = Vector2(-13, 0)
@@ -108,7 +109,6 @@ shape = SubResource("CapsuleShape2D_qjkh3")
 position = Vector2(32.1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=449321536]
-zoom = Vector2(2, 2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 

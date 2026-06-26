@@ -25,9 +25,7 @@ func shoot() -> void:
 			
 		else:
 			trail = Trail.new(parent.bullet_start.global_position, parent.bullet_start.global_position + direction * max_range)
-			print("miss")
 		parent.game.projectiles.add_child(trail)
-	else:
-		print("out of ammo")
+
 
 	

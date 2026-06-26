@@ -15,5 +15,5 @@ func take_damage(amount: float) -> void:
 	health -= amount
 	health = clamp(health, 0, max_health)
 	if health <= 0:
-		print("killed")
+		#print("killed")
 		parent.death()

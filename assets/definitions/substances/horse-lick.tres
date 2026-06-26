@@ -12,11 +12,11 @@ script = ExtResource("1_1xtmd")
 display_name = "Horse Lick"
 texture = SubResource("AtlasTexture_bi8hs")
 effects = Dictionary[int, float]({
-0: 1.3,
+0: 1.2,
 1: 1.2,
-2: 1.1,
+2: 1.05,
 6: 1.2,
 10: 0.8
 })
-flavour_text = "ARGH"
+flavour_text = "G1 winner"
 metadata/_custom_type_script = "uid://ruv3matqj6ya"

@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://hs222yetllqv" path="res://assets/textures/enemies/beer-enemy/beer-enemy10.png" id="12_hwggm"]
 [ext_resource type="Texture2D" uid="uid://bbwglmmy4rqc3" path="res://assets/textures/enemies/beer-enemy/beer-enemy11.png" id="13_3h3y3"]
 [ext_resource type="Texture2D" uid="uid://cnhmj0p2xyodr" path="res://assets/textures/enemies/beer-enemy/beer-enemy12.png" id="14_t4lxg"]
-[ext_resource type="AudioStream" uid="uid://cskao0ard2m4d" path="res://assets/sounds/enemy-shoot.wav" id="15_2c2j7"]
+[ext_resource type="AudioStream" uid="uid://dbw2023c14do0" path="res://assets/sounds/enemy-shoot.mp3" id="15_2c2j7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7c3f"]
 animations = [{
@@ -116,7 +116,8 @@ target_desired_distance = 64.0
 path_max_distance = 1024.0
 avoidance_enabled = true
 radius = 32.0
-neighbor_distance = 512.0
+neighbor_distance = 64.0
+max_neighbors = 2
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1067084594]
 stream = ExtResource("15_2c2j7")

@@ -13,6 +13,8 @@ class_name Game
 @export_category("Difficulty Scaling")
 @export var starting_value: int = 40
 @export var increase_by: int = 30
+@export var chance_for_elite: float = 0.1
+@export var rooms_to_beat: int = 15
 
 var current_balance_value := starting_value
 
@@ -22,10 +24,20 @@ var previous_room: PackedScene
 
 var enemy_pool: Array[PackedScene]
 var enemy_positions_pool: Array[Vector2]
+var enemy_elite_pool: Array[bool]
 var enemy_balance_values: Dictionary[PackedScene, int]
+var spawned_enemies: int = 0
 
 var enemy_scenes: Array = Files.read_scenes("res://enemy/enemies").values()
 var room_scenes: Array = Files.read_scenes("res://tilemap/rooms").values()
+
+var resetting: bool
+
+var rooms_cleared: int = 0:
+	set(new_value):
+		rooms_cleared = new_value
+		if new_value == rooms_to_beat:
+			print("beat the game")
 
 
 @export var SCENE_OVERRIDE: PackedScene
@@ -42,10 +54,12 @@ var picking_substance: bool = false:
 var remaining_enemies: int:
 	set(new_value):
 		remaining_enemies = new_value
-		if new_value == 0:
+		if new_value == 0 and not resetting:
 			room_cleared.emit()
 			
 func new_room() -> void:
+	rooms_cleared += 1
+	print(rooms_cleared)
 	room.get_child(0).free()
 	var new_room_scene: Node2D 
 	if SCENE_OVERRIDE != null:
@@ -131,28 +145,35 @@ func _spawn_enemies(value: int) -> void:
 		var enemy_pckd_scene = enemy_scenes.pick_random()
 		#var enemy: Enemy = enemy_pckd_scene.instantiate()
 		balance += enemy_balance_values[enemy_pckd_scene]
+		var is_elite: bool = randf() < chance_for_elite * StatChanges.get_multiplier(StatChanges.multiplier_keys.ENEMY_SPAWN_RATE)
 		enemy_pool.append(enemy_pckd_scene)
 		enemy_positions_pool.append(spawn_position)
+		enemy_elite_pool.append(is_elite)
 		n += 1
 	current_balance_value += increase_by
 	remaining_enemies = n
 	
 
 func reset() -> void:
-	for child in enemies.get_children():
+	resetting = true
+	rooms_cleared = 0
+	for child in enemies.get_children() + projectiles.get_children():
 		child.queue_free()
 	current_balance_value = starting_value
 	player.health_component.max_health = player.starting_health
 	player.health_component.health = player.starting_health
 	StatChanges.init(self)
 	new_room()
+	resetting = false
 
 func _process(_delta: float) -> void:
-	if enemy_pool:
+	if enemy_pool and spawned_enemies < 10:
 		var spawn_position: Vector2 = enemy_positions_pool.pop_front()
 		var enemy: Enemy = enemy_pool.pop_front().instantiate()
 		enemy.position = spawn_position
+		enemy.elite = enemy_elite_pool.pop_front()
 		enemies.add_child(enemy)
+		spawned_enemies += 1
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		for enemy in enemies.get_children():

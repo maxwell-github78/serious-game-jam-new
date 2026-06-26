@@ -33,15 +33,16 @@ func get_multiplier(key: multiplier_keys) -> float:
 
 func apply_effects(resource: Substance, dosage: float) -> void:
 	for key in resource.effects.keys():
-		if not key in add_instead: 
+		if not (key in add_instead): 
 			var multiplier: float = resource.effects[key]
 			var factor: float = pow(multiplier, dosage)
 			stat_multipliers[key] *= factor
 		else: 
 			stat_multipliers[key] += resource.effects[key] * dosage
 			if key == multiplier_keys.PLAYER_HEALTH:
-				game.player.health_component.max_health += resource.effects[key]
+				game.player.health_component.max_health += resource.effects[key] * dosage
+				game.player.health_component.health += resource.effects[key] * dosage
 			elif key == multiplier_keys.PLAYER_DODGE_CHANCE:
-				game.player.health_component.health += resource.effects[key]
+				game.player.dodge_chance += resource.effects[key] * dosage
 				
 		

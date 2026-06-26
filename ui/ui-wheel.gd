@@ -6,7 +6,7 @@ var velocity: float
 var friction: float
 var angle: float = 0.0
 var textures: Array
-const sound: AudioStream = preload("res://assets/sounds/tick.wav")
+const sound: AudioStream = preload("res://assets/sounds/tick.mp3")
 
 var tick_sound = AudioStreamPlayer2D.new()
 

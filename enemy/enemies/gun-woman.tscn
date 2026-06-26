@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://br2ahhhaut1l5" path="res://enemy/enemy.gd" id="1_leo3h"]
 [ext_resource type="PackedScene" uid="uid://drcyp675jwehs" path="res://bullet/standard-projectile.tscn" id="2_fbxw3"]
 [ext_resource type="Texture2D" uid="uid://cxo0bkfvd3mkj" path="res://assets/textures/enemies/gun-woman-sheet.png" id="3_leo3h"]
-[ext_resource type="AudioStream" uid="uid://cskao0ard2m4d" path="res://assets/sounds/enemy-shoot.wav" id="4_fbxw3"]
+[ext_resource type="AudioStream" uid="uid://dbw2023c14do0" path="res://assets/sounds/enemy-shoot.mp3" id="4_fbxw3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbxw3"]
 atlas = ExtResource("3_leo3h")
@@ -146,7 +146,8 @@ target_desired_distance = 64.0
 path_max_distance = 1024.0
 avoidance_enabled = true
 radius = 32.0
-neighbor_distance = 512.0
+neighbor_distance = 96.0
+max_neighbors = 4
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1291665741]
 stream = ExtResource("4_fbxw3")

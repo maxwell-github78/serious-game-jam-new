@@ -42,6 +42,8 @@ var prev_delta: float
 var previous_position: Vector2 = position
 var offset: Vector2
 
+var elite: bool
+
 func _ready() -> void:
 	rotation = randf() * 2 * PI
 	add_child(health_component)
@@ -61,6 +63,11 @@ func _ready() -> void:
 	projectiles.bullet_speed = bullet_speed
 	projectiles.packed_bullet = projectile_scene
 	body.animation_finished.connect(_end_throwing)
+	
+	if elite:
+		modulate = Color.YELLOW
+		health_component.max_health *= 2
+		health_component.health *= 2
 
 func throw() -> void:
 	projectiles.shoot()
@@ -81,8 +88,9 @@ func _process(_delta: float) -> void:
 		throw()
 
 func death() -> void: 
-	game.player.health_component.take_damage(-balance_value)
+	game.player.health_component.take_damage(-balance_value * 0.40)
 	game.remaining_enemies -= 1
+	game.spawned_enemies -= 1
 	queue_free()
 	
 func _physics_process(delta: float) -> void:

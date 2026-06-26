@@ -13,7 +13,7 @@ display_name = "Lollipop"
 texture = SubResource("AtlasTexture_0cox7")
 effects = Dictionary[int, float]({
 0: 1.4,
-1: 1.25
+1: 1.4
 })
-flavour_text = "Suck on it"
+flavour_text = "Suck on this"
 metadata/_custom_type_script = "uid://ruv3matqj6ya"

@@ -69,14 +69,15 @@ func show_substances() -> void:
 		var texture_rect := TextureRect.new()
 		texture_rect.texture = substance.texture
 		texture_rect.position.x = (rect_width - 64.0) / 2
-		texture_rect.position.y = 32
+		texture_rect.position.y = 37
 		rect.add_child(texture_rect)
 		
 		var flavour_text := RichTextLabel.new()
 		flavour_text.size = Vector2(64, 12)
-		flavour_text.position.y = texture_rect.position.y + texture_rect.size.y + 2
+		flavour_text.position.y = texture_rect.position.y -16
 		flavour_text.position.x = 32
-		flavour_text.text = substance.flavour_text
+		flavour_text.bbcode_enabled = true
+		flavour_text.text = "[color=gray]"+substance.flavour_text+"[/color]"
 		flavour_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		flavour_text.add_theme_font_size_override("normal_font_size", 16)
 		flavour_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -87,7 +88,8 @@ func show_substances() -> void:
 		name_text.size = Vector2(108, 24)
 		name_text.position.y = 10
 		name_text.position.x = 10
-		name_text.text = substance.display_name
+		name_text.bbcode_enabled = true
+		name_text.text = "[color=yellow]"+substance.display_name+"[/color]"
 		name_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		name_text.add_theme_font_size_override("normal_font_size", 16)
 		name_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -96,7 +98,7 @@ func show_substances() -> void:
 		
 		var effects_text := RichTextLabel.new()
 		effects_text.size = Vector2(108, 256)
-		effects_text.position.y = flavour_text.position.y + flavour_text.size.y + 10
+		effects_text.position.y = texture_rect.position.y + texture_rect.size.y + 10
 		effects_text.position.x = 10
 		effects_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		effects_text.add_theme_font_size_override("normal_font_size", 16)

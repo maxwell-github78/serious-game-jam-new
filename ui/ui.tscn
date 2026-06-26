@@ -11,11 +11,21 @@
 [ext_resource type="Script" uid="uid://coob6kfnmaefj" path="res://game/pointer.gd" id="6_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://darliv6dw2iti" path="res://assets/textures/health-bar/skull.png" id="7_bi8hs"]
 [ext_resource type="Texture2D" uid="uid://digymrp8n8smr" path="res://assets/textures/full-arts/dizzy-collect-substance.jpg" id="7_bo1jx"]
-[ext_resource type="AudioStream" uid="uid://bdnvjxl3o855j" path="res://assets/sounds/wheel.wav" id="12_hrmpd"]
+[ext_resource type="Script" uid="uid://bubmbg4wykpkb" path="res://ui/pause.gd" id="10_x7jpl"]
+[ext_resource type="Texture2D" uid="uid://18ws8apfot4y" path="res://assets/textures/tickbox.png" id="11_os0ka"]
+[ext_resource type="AudioStream" uid="uid://dcmo1yosfm4mk" path="res://assets/sounds/wheel.mp3" id="12_hrmpd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyqef"]
 atlas = ExtResource("2_m6e0p")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os0ka"]
+atlas = ExtResource("11_os0ka")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf2ns"]
+atlas = ExtResource("11_os0ka")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dakft"]
 atlas = ExtResource("5_n5ude")
@@ -89,8 +99,6 @@ animations = [{
 }]
 
 [node name="UI" type="CanvasLayer" unique_id=928540363]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_27fn8")
 
 [node name="Ammo" type="Control" parent="." unique_id=532375400]
@@ -140,7 +148,80 @@ offset_right = 512.0
 offset_bottom = 280.0
 script = ExtResource("4_nltto")
 
+[node name="Pause" type="Control" parent="." unique_id=1742744651]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+script = ExtResource("10_x7jpl")
+
+[node name="Dim" type="ColorRect" parent="Pause" unique_id=155970797]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Pause" unique_id=668023987]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 50.0
+offset_right = 440.0
+offset_bottom = 310.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/ColorRect" unique_id=1458266951]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.5
+offset_top = 20.0
+offset_right = 71.5
+offset_bottom = 182.0
+grow_horizontal = 2
+
+[node name="FullScreenToggle" type="CheckButton" parent="Pause/ColorRect/VBoxContainer" unique_id=1459451335]
+layout_mode = 2
+theme_override_icons/checked = SubResource("AtlasTexture_os0ka")
+theme_override_icons/unchecked = SubResource("AtlasTexture_mf2ns")
+text = "Toggle Fullscreen"
+
+[node name="Label" type="Label" parent="Pause/ColorRect/VBoxContainer" unique_id=886143166]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Pause/ColorRect/VBoxContainer" unique_id=149625337]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Pause/ColorRect/VBoxContainer" unique_id=484192937]
+layout_mode = 2
+text = "Sound Effects Volume
+"
+horizontal_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="Pause/ColorRect/VBoxContainer" unique_id=1219953483]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Pause/ColorRect/VBoxContainer" unique_id=1008654194]
+layout_mode = 2
+text = "Music Volume
+"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Pause/ColorRect/VBoxContainer" unique_id=1571244190]
+layout_mode = 2
+
+[node name="ReturnMainMenu" type="Button" parent="Pause/ColorRect/VBoxContainer" unique_id=11847560]
+layout_mode = 2
+text = "Quit run"
+
 [node name="Pointer" type="AnimatedSprite2D" parent="." unique_id=1796636697]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_waa4j")
 script = ExtResource("6_y4yjw")
 

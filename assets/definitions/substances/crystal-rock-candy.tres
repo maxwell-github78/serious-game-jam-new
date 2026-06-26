@@ -15,5 +15,5 @@ effects = Dictionary[int, float]({
 4: 0.7,
 5: 0.8
 })
-flavour_text = "(Candy)"
+flavour_text = "98% pure"
 metadata/_custom_type_script = "uid://ruv3matqj6ya"

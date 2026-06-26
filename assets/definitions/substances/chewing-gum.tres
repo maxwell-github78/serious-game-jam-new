@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Substance" format=3 uid="uid://babk0rsf4auqu"]
+
+[ext_resource type="Script" uid="uid://ruv3matqj6ya" path="res://stat-changes/substance-definition.gd" id="1_tvgyb"]
+[ext_resource type="Texture2D" uid="uid://bg1k3qvt3iouo" path="res://assets/textures/substance/gum-head.png" id="2_5virs"]
+
+[resource]
+script = ExtResource("1_tvgyb")
+display_name = "Chewing Gum"
+texture = ExtResource("2_5virs")
+effects = Dictionary[int, float]({
+0: 1.15,
+4: 0.85,
+10: 1.1
+})
+flavour_text = "Scandinavia"
+metadata/_custom_type_script = "uid://ruv3matqj6ya"

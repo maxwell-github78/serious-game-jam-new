@@ -84,7 +84,7 @@ func _process(_delta: float) -> void:
 	_look_at_mouse()
 	
 	if gun.rounds == 0 and gun.reload_timer.is_stopped() and not game.picking_substance:
-		print("reloading")
+		#print("reloading")
 		gun.reload_timer.start(reload_wait_time * StatChanges.get_multiplier(StatChanges.multiplier_keys.PLAYER_RELOADTIME))		
 	
 	if not game.picking_substance: 
@@ -97,9 +97,7 @@ func _process(_delta: float) -> void:
 	else:
 		damage_timer.paused = true
 		gun.shoot_timer.stop()
-		
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+	
 	
 	if not game.picking_substance and game.remaining_enemies == 0:
 		path_out.out = game.player_leave
